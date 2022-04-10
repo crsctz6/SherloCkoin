@@ -60,7 +60,7 @@
       "moduleName": "",
       "namespace": "",
       "typeScriptVersion": 2.7,
-      "template": "Angular",
+      "template": "React",
       "promiseType": "Promise",
       "httpClass": "HttpClient",
       "withCredentials": false,
