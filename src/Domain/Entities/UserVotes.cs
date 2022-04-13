@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace SherloCkoin.Domain.Entities
 {
-    public class Vote : AuditableEntity
+    public class UserVotes : AuditableEntity
     {
         public int Id { get; set; }
-        public bool IsVoted { get; set; }
+        public string UserIP { get; set; }
+        public Vote Vote { get; set; }
     }
 }

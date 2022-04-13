@@ -117,6 +117,7 @@ namespace SherloCkoin.WebUI
                 .AllowAnyMethod()
                 .AllowAnyHeader();
             });
+            app.UseOpenApi();
             app.UseSwaggerUi3(settings =>
             {
                 settings.Path = "/api";

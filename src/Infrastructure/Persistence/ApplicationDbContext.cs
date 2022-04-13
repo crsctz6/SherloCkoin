@@ -35,6 +35,8 @@ namespace SherloCkoin.Infrastructure.Persistence
 
         public DbSet<Vote> Votes { get; set; }
 
+        public DbSet<UserVotes> UsersVotes { get; set; }
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<AuditableEntity>())

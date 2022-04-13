@@ -8,9 +8,7 @@ namespace SherloCkoin.Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Vote> builder)
     {
-        builder.Property(t => t.UserIP)
-            .HasMaxLength(200)
-            .IsRequired();
+        
     }
 }
 }

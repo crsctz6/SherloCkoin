@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SherloCkoin.Infrastructure.Persistence;
 
 namespace SherloCkoin.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220412203425_AddedLogo")]
+    partial class AddedLogo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -325,38 +327,6 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                     b.ToTable("Coins");
                 });
 
-            modelBuilder.Entity("SherloCkoin.Domain.Entities.UsersVotes", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserIP")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("VoteId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VoteId");
-
-                    b.ToTable("UsersVotes");
-                });
-
             modelBuilder.Entity("SherloCkoin.Domain.Entities.Vote", b =>
                 {
                     b.Property<int>("Id")
@@ -381,6 +351,11 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserIP")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
@@ -505,25 +480,13 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SherloCkoin.Domain.Entities.UsersVotes", b =>
-                {
-                    b.HasOne("SherloCkoin.Domain.Entities.Vote", "Vote")
-                        .WithMany()
-                        .HasForeignKey("VoteId");
-
-                    b.Navigation("Vote");
-                });
-
             modelBuilder.Entity("SherloCkoin.Domain.Entities.Vote", b =>
                 {
-                    b.HasOne("SherloCkoin.Domain.Entities.Coin", null)
-                        .WithMany("Votes")
+                    b.HasOne("SherloCkoin.Domain.Entities.Coin", "Coin")
+                        .WithMany()
                         .HasForeignKey("CoinId");
-                });
 
-            modelBuilder.Entity("SherloCkoin.Domain.Entities.Coin", b =>
-                {
-                    b.Navigation("Votes");
+                    b.Navigation("Coin");
                 });
 #pragma warning restore 612, 618
         }
