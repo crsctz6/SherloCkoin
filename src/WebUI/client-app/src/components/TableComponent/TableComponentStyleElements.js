@@ -1,25 +1,36 @@
 import styled from "styled-components";
-import {Backgrounds, Borders,FontSize, FontColors,FontWeights,FontsFamilies} from '../GlobalStyleConsts'
+import {Backgrounds, Borders,FontSize, FontColors,FontWeights,FontsFamilies} from '../GlobalStyleConsts.js'
 
 export const ComponentContainer= styled.div`
-//borders
-border:2px solid;
-border-image:${Borders.orange};
-border-image-slice: 1;
-
+width: 90%;
+margin:0 auto;
+`
+export const TableHeading= styled.p`
+color:${FontColors.white};
+font-family:${FontsFamilies.rest};
+font-size:${FontSize.headersAndButtons};
 //positioning and spacing
-width: fit-content;
-white-space:nowrap; 
+margin-top:100px;
+text-align:left;
 
-@media screen and (max-width:950px){
-width:auto;
-overflow-x:scroll;
-
+@media screen and (max-width:1100px){
+    font-size:${FontSize.biggerText};
 }
-
 `
 export const TableWrapper= styled.div`
+//borders
+border:1.5px solid;
+border-image:${({top})=>(top ?  'linear-gradient(157.81deg, #FF7147 14.49%, rgba(255, 113, 71, 0.17) 93.93%)' 
+: 'linear-gradient(212.2deg, #625959 19.32%, rgba(98, 89, 89, 0) 90.56%)')};
+border-image-slice: 1;
+//positioning and spacing
+white-space:nowrap; 
+margin:0 auto;
 
+@media screen and (max-width:1585px){
+width:auto;
+overflow-x:scroll;
+}
 `
 
 export const Table = styled.table`
@@ -30,35 +41,32 @@ color:${FontColors.white};
 border-collapse:collapse;
 //font
 font-size:${FontSize.text};
-font-family:${FontsFamilies.rest}
-font-weight:${FontWeights.medium}
+font-family:${FontsFamilies.rest};
+font-weight:${FontWeights.medium};
 //positioning and spacing
 width:100%;
+position:relative;
 table-layout: auto;
 
-`
 
-export const Thead = styled.thead`
 `
 
 export const Tr = styled.tr`
-border-bottom: 1px solid ${Borders.grey};
+border-bottom: 1px solid ${Borders.solidGrey};
 height:50px;
     th:nth-child(3) {
-        color: orange;
         position: -webkit-sticky;
         position: sticky;
         left: 0;
-        z-index:15;
+        
         background:${Backgrounds.table};
         
     }
     Td:nth-child(3) {
-        color: orange;
         position: -webkit-sticky;
         position: sticky;
         left: 0px;
-        z-index:15;
+        
         background:${Backgrounds.table};
         
     }
@@ -66,9 +74,9 @@ height:50px;
 `
 export const Tbody = styled.tbody`
 `
+export const Thead = styled.thead`
+`
 export const Td = styled.td`
 padding: 10px 4vw;
-
-
-
+text-align:center;
 `

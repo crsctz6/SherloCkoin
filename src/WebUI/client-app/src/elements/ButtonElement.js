@@ -4,11 +4,15 @@ import { Backgrounds,Borders,FontSize,FontWeights,FontColors } from '../componen
 export const Button = styled.button`
 background:${Backgrounds.button};
 color:${FontColors.white};
-font-size:${FontSize.headersAndButtons};
+font-size:${FontSize.text};
 width:auto;
 max-height:65px;
 padding:10px 20px;
-border-color: ${Borders.solidOrange};
+border: ${({tableButton})=>tableButton ? 'transparent':'${Borders.orange}'};
 border-radius:5px;
-cursor:pointer
+cursor:pointer;
+
 `
+
+
+
