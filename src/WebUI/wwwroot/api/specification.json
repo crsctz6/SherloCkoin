@@ -30,6 +30,15 @@
               "format": "int32"
             },
             "x-position": 2
+          },
+          {
+            "name": "UaserIP",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 3
           }
         ],
         "responses": {
@@ -38,7 +47,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PaginatedListOfCoinDTO"
+                  "$ref": "#/components/schemas/PaginatedListOfCoinListedDTO"
                 }
               }
             }
@@ -152,11 +161,82 @@
           }
         }
       }
+    },
+    "/api/Vote": {
+      "get": {
+        "tags": [
+          "Vote"
+        ],
+        "operationId": "Vote_GetVotesForCoinByUserIP",
+        "parameters": [
+          {
+            "name": "UserIP",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "CoinId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoteDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Vote"
+        ],
+        "operationId": "Vote_Create",
+        "requestBody": {
+          "x-name": "command",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVoteCommand"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "PaginatedListOfCoinDTO": {
+      "PaginatedListOfCoinListedDTO": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -164,7 +244,7 @@
             "type": "array",
             "nullable": true,
             "items": {
-              "$ref": "#/components/schemas/CoinDTO"
+              "$ref": "#/components/schemas/CoinListedDTO"
             }
           },
           "pageIndex": {
@@ -187,64 +267,41 @@
           }
         }
       },
-      "CoinDTO": {
+      "CoinListedDTO": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
+          "logo": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
           },
           "name": {
             "type": "string",
             "nullable": true
           },
-          "symbol": {
-            "type": "string",
-            "nullable": true
+          "marketCap": {
+            "type": "number",
+            "format": "double"
           },
-          "network": {
-            "type": "string",
-            "nullable": true
+          "price": {
+            "type": "number",
+            "format": "double"
           },
-          "isInPresale": {
+          "changedPrice": {
+            "type": "number",
+            "format": "double"
+          },
+          "launch": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "votes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isVoted": {
             "type": "boolean"
-          },
-          "contractAddress": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "launchDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "customChartLink": {
-            "type": "string",
-            "nullable": true
-          },
-          "customSwapLink": {
-            "type": "string",
-            "nullable": true
-          },
-          "websiteLink": {
-            "type": "string",
-            "nullable": true
-          },
-          "telegramLink": {
-            "type": "string",
-            "nullable": true
-          },
-          "twitterLink": {
-            "type": "string",
-            "nullable": true
-          },
-          "discordLink": {
-            "type": "string",
-            "nullable": true
           }
         }
       },
@@ -367,6 +424,29 @@
           "discordLink": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "VoteDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isVoted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "CreateVoteCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userIP": {
+            "type": "string",
+            "nullable": true
+          },
+          "coinId": {
+            "type": "integer",
+            "format": "int32"
           }
         }
       }

@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace SherloCkoin.Application.Coins.EventHandlers
+namespace SherloCkoin.Application.Votes.EventHandlers
 {
      public class VoteCreatedEventHandler : INotificationHandler<DomainEventNotification<VoteCreatedEvent>>
     {

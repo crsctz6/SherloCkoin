@@ -9,7 +9,12 @@ namespace SherloCkoin.Domain.Entities
 {
     public class Coin : AuditableEntity, IHasDomainEvent
     {
+        public Coin()
+        {
+            Votes = new List<Vote>();
+        }
         public int Id { get; set; }
+        public byte[] Logo { get; set; }
         public string Name { get; set; }
         public string Symbol { get; set; }
         public string Network { get; set; }
@@ -24,5 +29,6 @@ namespace SherloCkoin.Domain.Entities
         public string TwitterLink { get; set; }
         public string DiscordLink { get; set; }
         public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
+        public List<Vote> Votes { get; set; }
     }
 }

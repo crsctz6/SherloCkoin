@@ -7,13 +7,14 @@ using SherloCkoin.Application.Coins.Queries.GetCoinsWithPagination;
 using SherloCkoin.Application.Coins.Commands.CreateCoin;
 using SherloCkoin.Application.Coins.Commands.DeleteCoin;
 using SherloCkoin.Application.Coins.Commands.UpdateCoin;
+using SherloCkoin.Application.Coins.Queries.GetCoinsList;
 
 namespace SherloCkoin.WebUI.Controllers
 {
     public class CoinController : ApiControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<PaginatedList<CoinDTO>>> GetTodoItemsWithPagination([FromQuery] GetCoinsWithPaginationQuery query)
+        public async Task<ActionResult<PaginatedList<CoinListedDTO>>> GetTodoItemsWithPagination([FromQuery] GetCoinsWithPaginationQuery query)
         {
             return await Mediator.Send(query);
         }

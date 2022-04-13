@@ -11,6 +11,8 @@ namespace SherloCkoin.Application.Common.Interfaces
 
         DbSet<Coin> Coins { get; set; }
 
+        DbSet<UserVotes> UsersVotes { get; set; }
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

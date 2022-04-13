@@ -33,7 +33,12 @@ namespace SherloCkoin.Infrastructure.Persistence
             {
                 context.Coins.Add(new Coin
                 {
-                    Name = "Coin",
+                    Name = "XY Finance",
+                    ContractAddress = "0x77777777772cf0455fB38eE0e75f38034dFa50DE",
+                    Description = "XY Finance is a one-stop cross-chain aggregator for DeFi and Metaverse. Our mission is to facilitate the seamless and secure transfer of on-chain assets, including tokens, NFTs, and more, across all blockchains. The protocol has built a one-click swap aggregator with the highest interoperability that allows crypto users to trade all on-chain assets.",
+                    Symbol = "XY",
+                    DiscordLink = "https://discord.com/invite/zHKxJYZ52P",
+                    WebsiteLink = "https://xy.finance/"
                 });
 
                 await context.SaveChangesAsync();
