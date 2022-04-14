@@ -10,10 +10,16 @@ export const HeaderComp = styled.div`
   left: 4%;
   right: 4%;
   z-index: 10;
-  background-color: red;
+  background-color: black;
+  padding: 0 20px 0 20px;
+  border-radius: 0 0 50px 50px;
 `;
 
 export const LogoHeader = styled.img`
   width: 180px;
   padding: 11px;
+
+  @media screen and (max-width: 760px) {
+    width: 140px;
+  }
 `;
