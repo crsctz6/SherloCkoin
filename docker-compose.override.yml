@@ -4,12 +4,12 @@ services:
   webui:
     environment:
       - "ASPNETCORE_ENVIRONMENT=Development"
-      - "SpaBaseUrl=http://clientapp:4200"
+      - "SpaBaseUrl=http://client-app:4200"
 
-  clientapp:
-    image: ${DOCKER_REGISTRY-}clientapp
+  client-app:
+    image: ${DOCKER_REGISTRY-}client-app
     build:
-      context: src/WebUI/ClientApp
+      context: src/WebUI/client-app
       dockerfile: Dockerfile
     depends_on:
       - webui

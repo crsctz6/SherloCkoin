@@ -8,9 +8,9 @@ services:
       dockerfile: src/WebUI/Dockerfile
     environment:
       - "UseInMemoryDatabase=false"
-      - "ConnectionStrings__DefaultConnection=Server=localhost;Database=SherloCkoinDb;User=bob;Password=1234;MultipleActiveResultSets=true"
+      - "ConnectionStrings__DefaultConnection=Server=db;Database=SherloCkoinDb;User=sa;Password=123Asus!@#;MultipleActiveResultSets=true"
       - "IdentityServer__Key__Type=Development"
-      - "ASPNETCORE_Kestrel__Certificates__Default__Password=1234"
+      - "ASPNETCORE_Kestrel__Certificates__Default__Password=123Asus!@#"
       - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx"
     volumes:
       - ~/.aspnet/https:/https:ro
@@ -24,5 +24,5 @@ services:
   db:
     image: "mcr.microsoft.com/mssql/server"
     environment:
-      - "SA_PASSWORD=Your_password123"
+      - "SA_PASSWORD=123Asus!@#"
       - "ACCEPT_EULA=Y"

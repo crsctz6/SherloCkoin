@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using System.Linq;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace SherloCkoin.WebUI
 {
@@ -66,10 +67,9 @@ namespace SherloCkoin.WebUI
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-            // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "client-app/build";
             });
 
             services.AddOpenApiDocument(configure =>
@@ -137,7 +137,16 @@ namespace SherloCkoin.WebUI
                 endpoints.MapRazorPages();
             });
 
-           
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "client-app";
+                if (env.IsDevelopment())
+                {
+                    //spa.UseAngularCliServer(npmScript: "start");
+                    spa.UseProxyToSpaDevelopmentServer(Configuration["SpaBaseUrl"] ?? "http://localhost:4200");
+                }
+            });
+
         }
     }
 }
