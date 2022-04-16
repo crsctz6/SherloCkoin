@@ -13,7 +13,7 @@ services:
       - "ASPNETCORE_Kestrel__Certificates__Default__Password=123Asus!@#"
       - "ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx"
     volumes:
-      - ~/.aspnet/https:/https:ro
+      - C:/Users/Florin/.aspnet/https/aspnetapp.pfx:/https/aspnetapp.pfx
     ports:
       - "5000:5000"
       - "5001:5001"
