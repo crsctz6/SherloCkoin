@@ -10,7 +10,7 @@ border-image:${Borders.orange};
 border-image-slice:1;
 //positioning and spacing
 width:90%;
-margin:250px auto 100px auto;
+margin:100px auto 100px auto;
 padding:50px 0;
 //font
 font-family:${FontsFamilies.rest};

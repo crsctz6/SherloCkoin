@@ -9,9 +9,8 @@ import {
 } from "../GlobalStyleConsts.js";
 
 export const ComponentContainer = styled.div`
-  padding:150px 0 0 0;
   width: 90%;
-  margin: 0 auto;
+  margin: 150px auto 100px auto;
 `;
 export const TableHeading = styled.p`
   color: ${FontColors.white};
@@ -19,7 +18,7 @@ export const TableHeading = styled.p`
   font-size: ${FontSize.headersAndButtons};
   //positioning and spacing
   text-align: left;
-  margin: 0 ;
+  margin-bottom:20px ;
 
   @media screen and (max-width: 1100px) {
     font-size: ${FontSize.biggerText};
@@ -30,8 +29,8 @@ export const TableWrapper = styled.div`
   border: 1.5px solid;
   border-image: ${({ top }) =>
     top
-      ? "linear-gradient(157.81deg, #FF7147 14.49%, rgba(255, 113, 71, 0.17) 93.93%)"
-      : "linear-gradient(212.2deg, #625959 19.32%, rgba(98, 89, 89, 0) 90.56%)"};
+      ? `${Borders.orange}`
+      : "linear-gradient(212.2deg, #625959 19.32%, rgba(98, 89, 89, 0) 90.56%)"};   
   border-image-slice: 1;
   //positioning and spacing
   white-space: nowrap;

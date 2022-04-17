@@ -10,9 +10,9 @@ export const HeaderComp = styled.div`
   left: 4%;
   right: 4%;
   z-index: 10;
-  background-color: black;
+  background-color: #182B43;
   padding: 0 20px 0 20px;
-  border-radius: 0 0 50px 50px;
+  border-radius: 0 0 15px 15px;
 `;
 
 export const LogoHeader = styled.img`

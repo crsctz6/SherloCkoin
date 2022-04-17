@@ -14,6 +14,7 @@ export const Borders = {
     orange: 'linear-gradient(157.81deg, #FF7147 14.49%, rgba(255, 113, 71, 0.17) 93.93%);',
     blue: 'linear-gradient(152.01deg, #4463E0 17.35%, rgba(98, 89, 89, 0) 155.07%);',
     grey:'linear-gradient(212.2deg, #625959 19.32%, rgba(98, 89, 89, 0) 90.56%);',
+    reverseGrey:'linear-gradient(105.42deg, #898585 24.86%, rgba(98, 89, 89, 0) 112.22%)',
     solidGrey: '#625959',
     solidOrange: '#FF7147'
 };

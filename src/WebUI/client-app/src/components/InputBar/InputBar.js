@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
-import { Form, Input, Button } from "./InputBarStyledComponents";
+import { Form, Input, Button, MagnifyImg } from "./InputBarStyledComponents";
+import search from '../../photos/magnify.png'
 
 const InputBar = () => {
   const [input, setInput] = useState("");
@@ -38,7 +39,7 @@ const InputBar = () => {
       ref={formRef}
     >
       <Button type="submit" barOpened={barOpened}>
-        Coins
+        <MagnifyImg src={search}/>
       </Button>
       <Input
         onChange={(e) => setInput(e.target.value)}

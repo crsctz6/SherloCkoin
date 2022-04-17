@@ -8,7 +8,7 @@ const Header = () => {
     <HeaderComp>
       <LogoHeader src="../../assets/logoPng.png" />
       <InputBar />
-      <Button width='170px' height='50px' font-size='18px'>Submit Coin</Button>
+      <Button width='170px' height='50px' font-size='18px' tableButton={false}>Submit Coin</Button>
     </HeaderComp>
   );
 };

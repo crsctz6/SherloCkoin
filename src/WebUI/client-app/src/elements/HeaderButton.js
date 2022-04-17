@@ -11,8 +11,9 @@ export const Button = styled.button`
   color: ${FontColors.white};
   font-size: ${(props) => props ?? FontSize.text};
   padding: 10px 20px;
-  border: ${({ tableButton }) =>
+  border-image: ${({ tableButton }) =>
     tableButton ? "transparent" : Borders.orange};
+  border-image-slice:1;
   border-radius: 5px;
   width: ${(props) => props.width ?? "auto"};
   height: ${(props) => props.height ?? "auto"};
