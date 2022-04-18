@@ -26,11 +26,11 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                 </Tr>
               </Thead>
               <Tbody>
-                {Object.values(tableData).map((obj, ind) => (
-                  <Tr key={ind}>
-                    {Object.values(obj).map((value, ind2) => (
+                {Object.values(tableData).map((obj, index) => (
+                  <Tr key={index}>
+                    {Object.values(obj).map((value, index) => (
                       <>
-                        <Td key={ind2}>{value}</Td>
+                        <Td key={index}>{value}</Td>
                       </>
                     ))}
                   </Tr>
@@ -52,11 +52,11 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                 </Tr>
               </Thead>
               <Tbody>
-                {Object.values(tableData).map((obj, ind) => (
-                  <Tr key={ind}>
-                    {Object.values(obj).map((value, ind2) => (
+                {Object.values(tableData).map((obj, index) => (
+                  <Tr key={index}>
+                    {Object.values(obj).map((value, index) => (
                       <>
-                        <Td key={ind2}>{value}</Td>
+                        <Td key={index}>{value}</Td>
                       </>
                     ))}
                   </Tr>

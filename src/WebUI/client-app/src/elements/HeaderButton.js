@@ -18,4 +18,10 @@ export const Button = styled.button`
   width: ${(props) => props.width ?? "auto"};
   height: ${(props) => props.height ?? "auto"};
   cursor: pointer;
+  
+  @media screen and (max-width:700px){
+    max-width:90px;
+    height:50px;
+    font-size:${FontSize.text};
+  }
 `;

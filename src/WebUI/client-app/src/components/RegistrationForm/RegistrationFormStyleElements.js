@@ -38,3 +38,12 @@ export const Label = styled.label`
 color:${FontColors.white};
 margin:20px 0 10px 0;
 `
+export const UploadImg =styled.p`
+color:${FontColors.lightGrey};
+font-size:${FontSize.text};
+`;
+export const Plus =styled.img`
+padding-top:15px;
+height:40px;
+width:40px;
+`;
