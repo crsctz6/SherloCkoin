@@ -1,10 +1,8 @@
 import React from "react";
 import "../App.css";
 import TableComponent from "../components/TableComponent/TableComponent";
-import FooterComponent from "../components/FooterComponent/FooterComponent";
 import TextCardComponent from "../components/TextCardComponent/TextCardComponent";
 import { Button } from "../elements/ButtonElement";
-import Header from "../components/Header/Header";
 
 const tableData = [
   {
@@ -92,7 +90,6 @@ const coinsType = ["Top Coins", "Coins"];
 function HomePage() {
   return (
     <div>
-      <Header />
       <TableComponent
         tableHead={tableHead}
         tableData={tableData}
@@ -104,7 +101,6 @@ function HomePage() {
         coinsType={coinsType[1]}
       />
       <TextCardComponent />
-      <FooterComponent />
     </div>
   );
 }
