@@ -1,7 +1,5 @@
 import React from 'react'
-import Header from '../components/Header/Header'
 import CoinDetailsComponent from '../components/CoinDetailsComponent/CoinDetailsComponent'
-import FooterComponent from '../components/FooterComponent/FooterComponent'
 import TableComponent from '../components/TableComponent/TableComponent'
 import { Button } from '../elements/HeaderButton'
 const tableData = [
@@ -91,14 +89,12 @@ const coinsType = ["Top Coins", "Coins"];
 function CoinDetails() {
   return (
       <>
-        <Header/>
         <CoinDetailsComponent/>
         <TableComponent
         tableHead={tableHead}
         tableData={tableData}
         coinsType={coinsType[0]}
       />
-        <FooterComponent/>
     </>
   )
 }

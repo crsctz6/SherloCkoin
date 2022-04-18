@@ -1,7 +1,6 @@
 import React,  { useState,useEffect  } from "react";
 import "../App.css";
 import TableComponent from "../components/TableComponent/TableComponent";
-import FooterComponent from "../components/FooterComponent/FooterComponent";
 import TextCardComponent from "../components/TextCardComponent/TextCardComponent";
 import { Button } from "../elements/ButtonElement";
 import Header from "../components/Header/Header";
@@ -109,7 +108,6 @@ function HomePage() {
   }, []);
   return (
     <div>
-      <Header />
       <TableComponent
         tableHead={tableHead}
         tableData={coins}
@@ -121,7 +119,6 @@ function HomePage() {
         coinsType={coinsType[1]}
       />
       <TextCardComponent />
-      <FooterComponent />
     </div>
   );
 }
