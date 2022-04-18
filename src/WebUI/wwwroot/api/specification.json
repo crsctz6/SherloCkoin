@@ -11,7 +11,7 @@
         "tags": [
           "Coin"
         ],
-        "operationId": "Coin_GetTodoItemsWithPagination",
+        "operationId": "Coin_GetCoinsWithPagination",
         "parameters": [
           {
             "name": "PageNumber",
