@@ -77,6 +77,13 @@ import {CoinClient} from "../components/SheloCkoinApi.ts"
 //     button: <Button tableButton={true}>Vote</Button>,
 //   },
 // ];
+function Base64ToImage(base64img, callback) {
+  var img = new Image();
+  img.onload = function() {
+      callback(img);
+  };
+  img.src = base64img;
+}
 
 const tableHead = [
   "#",

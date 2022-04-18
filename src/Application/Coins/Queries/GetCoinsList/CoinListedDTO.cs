@@ -11,7 +11,7 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsList
 {
     public class CoinListedDTO : IMapFrom<Coin>
     {
-        public byte[] Logo { get; set; }
+        public string Logo { get; set; }
         public string Name { get; set; }
         public double MarketCap { get; set; }
         public double Price { get; set; }
