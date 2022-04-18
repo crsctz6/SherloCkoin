@@ -14,7 +14,7 @@ namespace SherloCkoin.WebUI.Controllers
     public class CoinController : ApiControllerBase
     {
         [HttpGet]
-        public async Task<ActionResult<PaginatedList<CoinListedDTO>>> GetTodoItemsWithPagination([FromQuery] GetCoinsWithPaginationQuery query)
+        public async Task<ActionResult<PaginatedList<CoinListedDTO>>> GetCoinsWithPagination([FromQuery] GetCoinsWithPaginationQuery query)
         {
             return await Mediator.Send(query);
         }

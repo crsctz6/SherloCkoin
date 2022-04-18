@@ -13,7 +13,7 @@ namespace SherloCkoin.Application.IntegrationTests.Coins
     public class UpdateCoinTests : TestBase
     {
         [Test]
-        public void ShouldRequireValidTodoItemId()
+        public void ShouldRequireValidCoinId()
         {
             var command = new UpdateCoinCommand
             {
