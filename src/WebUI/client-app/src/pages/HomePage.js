@@ -99,7 +99,7 @@ const coinsType = ["Top Coins", "Coins"];
 const callApi = async () => {
 
   let client = new CoinClient("https://localhost:5001");
-  let response = await client.getCoinsWithPagination(1,10,0);
+  let response = await client.getCoinsWithPagination(1,10,1);
   return response;
 };   
 
@@ -109,7 +109,12 @@ function HomePage() {
     console.log("test");
     callApi().then(data => 
     {
-      setCoins(data.items);
+      setCoins(data.items.map((item) => {
+        item.button = <Button tableButton={true}>Vote</Button>
+        item.logo = <img src={item.logo} height="30px" width = "30px"/>
+        return item
+      }));
+      
     });
     
   }, []);
@@ -122,7 +127,7 @@ function HomePage() {
       />
       <TableComponent
         tableHead={tableHead}
-        tableData={coins}
+        tableData={tableData}
         coinsType={coinsType[1]}
       />
       <TextCardComponent />
