@@ -30,6 +30,7 @@ const coinsType = ["Top Coins", "Coins"];
 
 function CoinDetails(props) {
   const [coinDetails, setCoinDetails] = useState();
+  const [wasVoted, setWasVoted] = useState();
   const {id} = useParams();
 
   useEffect(() => {
@@ -37,14 +38,19 @@ function CoinDetails(props) {
         setCoinDetails(res)
       }
         );
-  }, [id, props.userIP]);
+  }, [id, props.userIP, wasVoted]);
 
+  function handleVote(item)
+  {
+    props.handleVote(item);
+    setWasVoted(true);
+  }
 
   return (
       <>
         {coinDetails && <CoinDetailsComponent 
           coinDetails={coinDetails}
-          handleVote = {props.handleVoteClick} />}
+          handleVote = {(item) => handleVote(item)} />}
         <TableComponent
         tableHead={tableHead}
         tableData={props.coins}
