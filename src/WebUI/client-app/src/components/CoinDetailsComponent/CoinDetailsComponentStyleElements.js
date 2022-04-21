@@ -91,8 +91,6 @@ font-size:${FontSize.text};
  margin:15px;}`;
 
 
-//End of Top Section
-
 export const MarketOverviewContainer = styled.div`
 width:90%;
 margin:120px auto 0 auto;

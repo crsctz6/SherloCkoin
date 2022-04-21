@@ -11,7 +11,9 @@ const Header = () => {
         <LogoHeader src="../../assets/logoPng.png" />
       </Link>
       <InputBar />
+      <Link to='/listed'>
       <Button width='170px' height='50px' font-size='18px' tableButton={false}>Submit Coin</Button>
+      </Link>
     </HeaderComp>
   );
 };

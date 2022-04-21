@@ -5,9 +5,7 @@ export const FooterWrapper = styled.div`
 background-image:url('./assets/bott.png');
 background-size:cover;
 background-position:center;
-//font
 font-family:${FontsFamilies.rest};
-//positioning and spacing
 height:auto;
 width:100%;
 left:0;
@@ -25,7 +23,6 @@ flex-direction:column;
 `
 
 export const FooterContainer = styled.div`
-
 flex:1;
 align-content:center;
 text-align:center;
@@ -39,7 +36,6 @@ width:140px;
 export const RightsContainer = styled.div`
 line-height:0.6em;
 
-//remember to modify this when responsivenes
 `
 export const RightsName = styled.h4`
 color:${FontColors.white};

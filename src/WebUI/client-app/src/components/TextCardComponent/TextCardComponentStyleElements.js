@@ -4,15 +4,12 @@ import {FontSize, FontColors,FontWeights,FontsFamilies, Backgrounds, Borders} fr
 export const CardWrapper =styled.div`
 background:${Backgrounds.table};
 
-//borders
 border:1.5px solid;
 border-image:${Borders.orange};
 border-image-slice:1;
-//positioning and spacing
 width:90%;
 margin:100px auto 100px auto;
 padding:50px 0;
-//font
 font-family:${FontsFamilies.rest};
 `
 

@@ -1,5 +1,3 @@
-
-
 export  const Backgrounds = {
     blueRadial: 'radial-gradient(66.9% 82.39% at 23.93% 33.1%, #243B55 0%, #0B1B2E 100%);',
     button:'linear-gradient(115.77deg, #2862A8 33.72%, rgba(68, 99, 224, 0) 138.48%);',
@@ -19,8 +17,6 @@ export const Borders = {
     solidGrey: '#625959',
     solidOrange: '#FF7147'
 };
-
-//fonts
 
 export const FontSize= {
     title: '30px',

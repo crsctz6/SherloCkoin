@@ -48,8 +48,7 @@ function CoinDetails(props) {
         <TableComponent
         tableHead={tableHead}
         tableData={props.coins}
-        coinsType={coinsType[0]}
-      />
+        coinsType={coinsType[0]}/>
     </>
   )
 }

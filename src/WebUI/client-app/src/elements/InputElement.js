@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {FontSize, FontColors,FontWeights,FontsFamilies, Borders, Backgrounds} from '../components/GlobalStyleConsts'
+import {FontColors , Borders, Backgrounds} from '../components/GlobalStyleConsts'
 
 export  const Input =styled.input`
   font-size: 14px;

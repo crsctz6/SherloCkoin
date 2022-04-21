@@ -43,7 +43,6 @@ export const Table = styled.table`
   background: ${Backgrounds.table};
   color: ${FontColors.white};
   border-collapse: collapse;
-  //font
   font-size: ${FontSize.text};
   font-family: ${FontsFamilies.rest};
   font-weight: ${FontWeights.medium};
