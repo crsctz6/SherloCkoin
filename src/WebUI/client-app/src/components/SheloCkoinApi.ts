@@ -269,6 +269,7 @@ export interface PaginatedListOfCoinListedDTO {
 }
 
 export interface CoinListedDTO {
+    id?: number;
     logo?: string | undefined;
     name?: string | undefined;
     marketCap?: number;

@@ -11,6 +11,7 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsList
 {
     public class CoinListedDTO : IMapFrom<Coin>
     {
+        public int Id { get; set; }
         public string Logo { get; set; }
         public string Name { get; set; }
         public double MarketCap { get; set; }
@@ -21,9 +22,11 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsList
         public bool IsVoted { get; set; }
         public void Mapping(Profile profile)
         {
-            List<UserVotes> userVotes = null;
+            string userIP = "";
             profile.CreateMap<Coin, CoinListedDTO>()
-                .ForMember(d => d.Votes, opt => opt.MapFrom(c => c.Votes.Count));
+                .ForMember(d => d.Votes, opt => opt.MapFrom(c => c.Votes.Count))
+                .ForMember(d => d.IsVoted, opt => opt.MapFrom(
+                    c => c.UsersVotes.Select(v => v.UserIP).Contains(userIP)));
         }
     }
 }

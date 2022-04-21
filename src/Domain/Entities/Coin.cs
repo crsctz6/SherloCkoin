@@ -12,6 +12,7 @@ namespace SherloCkoin.Domain.Entities
         public Coin()
         {
             Votes = new List<Vote>();
+            UsersVotes = new List<UserVotes>();
         }
         public int Id { get; set; }
         public string Logo { get; set; }
@@ -30,5 +31,6 @@ namespace SherloCkoin.Domain.Entities
         public string DiscordLink { get; set; }
         public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
         public List<Vote> Votes { get; set; }
+        public List<UserVotes> UsersVotes { get; set; }
     }
 }

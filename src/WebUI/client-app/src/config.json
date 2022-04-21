@@ -1,0 +1,4 @@
+{
+    "REACT_APP_SERVER_URL" : "https://localhost:5001",
+    "REACT_APP_GET_USERIP_URL" : "https://geolocation-db.com/json/"
+}
