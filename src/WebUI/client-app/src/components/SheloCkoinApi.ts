@@ -316,6 +316,7 @@ export interface CoinListedDTO {
     launch?: number;
     votes?: number;
     isVoted?: boolean;
+    isPromoted?: boolean;
 }
 
 export interface CoinDetailsDTO {

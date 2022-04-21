@@ -29,6 +29,8 @@ namespace SherloCkoin.Domain.Entities
         public string TelegramLink { get; set; }
         public string TwitterLink { get; set; }
         public string DiscordLink { get; set; }
+        public bool IsPromoted { get; set; }
+        public bool IsApproved { get; set; }
         public List<DomainEvent> DomainEvents { get; set; } = new List<DomainEvent>();
         public List<Vote> Votes { get; set; }
         public List<UserVotes> UsersVotes { get; set; }

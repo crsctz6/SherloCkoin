@@ -19,6 +19,7 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsList
         public long Launch { get; set; }
         public int Votes { get; set; }
         public bool IsVoted { get; set; }
+        public bool IsPromoted { get; set; }
         public void Mapping(Profile profile)
         {
             string userIP = "";

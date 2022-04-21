@@ -343,6 +343,9 @@
           },
           "isVoted": {
             "type": "boolean"
+          },
+          "isPromoted": {
+            "type": "boolean"
           }
         }
       },

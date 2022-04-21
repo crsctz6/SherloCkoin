@@ -143,7 +143,7 @@ function CoinDetailsComponent(props) {
             </Analytics>
             { details.isVoted == false && 
             <Button width='170px' height='50px' font-size='18px' tableButton={false} onClick={() => props.handleVote(details)} >
-                Vote BNB
+                Vote {details.name}
             </Button> }
         </AnalyticsAndButtonContainer>
     </CoinDetailsContainer>
