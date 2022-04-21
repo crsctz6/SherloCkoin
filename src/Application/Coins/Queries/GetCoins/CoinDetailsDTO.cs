@@ -2,6 +2,7 @@
 using SherloCkoin.Application.Common.Mappings;
 using SherloCkoin.Domain.Entities;
 using System;
+using System.Linq;
 
 namespace SherloCkoin.Application.Coins.Queries.GetCoins
 {
@@ -21,9 +22,18 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoins
         public string TelegramLink { get; set; }
         public string TwitterLink { get; set; }
         public string DiscordLink { get; set; }
+        public int Votes { get; set; }
+        public int LastDayVotes { get; set; }
+        public bool IsVoted { get; set; }
+        public string Logo { get; set; }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Coin, CoinDetailsDTO>();
+            string userIP = "";
+            profile.CreateMap<Coin, CoinDetailsDTO>()
+                .ForMember(d => d.Votes, opt => opt.MapFrom(c => c.Votes.Count))
+                .ForMember(d => d.LastDayVotes, opt => opt.MapFrom(c => c.UsersVotes.Count)).
+                ForMember(d => d.IsVoted, opt => opt.MapFrom(
+                    c => c.UsersVotes.Select(v => v.UserIP).Contains(userIP))); 
         }
     }
 }

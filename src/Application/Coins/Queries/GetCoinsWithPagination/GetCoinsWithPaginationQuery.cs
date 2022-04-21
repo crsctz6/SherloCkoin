@@ -17,7 +17,7 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsWithPagination
     {
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
-        public string UaserIP { get; set; }
+        public string UserIP { get; set; }
     }
 
     public class GetCoinsWithPaginationQueryHandler : IRequestHandler<GetCoinsWithPaginationQuery, PaginatedList<CoinListedDTO>>
@@ -35,7 +35,7 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsWithPagination
         {
             return await _context.Coins
                 .OrderBy(x => x.Name)
-                .ProjectTo<CoinListedDTO>(_mapper.ConfigurationProvider, new  { userIP =request.UaserIP})
+                .ProjectTo<CoinListedDTO>(_mapper.ConfigurationProvider, new  { userIP =request.UserIP })
                 .PaginatedListAsync(request.PageNumber, request.PageSize);
         }
     }

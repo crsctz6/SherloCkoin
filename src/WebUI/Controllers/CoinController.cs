@@ -20,10 +20,10 @@ namespace SherloCkoin.WebUI.Controllers
             return await Mediator.Send(query);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<CoinDetailsDTO>> GetCoinDetails(int id)
+        [HttpGet("{id}/{userIP}")]
+        public async Task<ActionResult<CoinDetailsDTO>> GetCoinDetails(int id, string userIP)
         {
-            return await Mediator.Send(new GetCoinsDetailsById() { CoinId = id});
+            return await Mediator.Send(new GetCoinsDetailsById() { CoinId = id, UserIP = userIP});
         }
 
 

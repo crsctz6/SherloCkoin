@@ -32,7 +32,7 @@
             "x-position": 2
           },
           {
-            "name": "UaserIP",
+            "name": "UserIP",
             "in": "query",
             "schema": {
               "type": "string",
@@ -86,7 +86,7 @@
         }
       }
     },
-    "/api/Coin/{id}": {
+    "/api/Coin/{id}/{userIP}": {
       "get": {
         "tags": [
           "Coin"
@@ -102,6 +102,16 @@
               "format": "int32"
             },
             "x-position": 1
+          },
+          {
+            "name": "userIP",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 2
           }
         ],
         "responses": {
@@ -116,7 +126,9 @@
             }
           }
         }
-      },
+      }
+    },
+    "/api/Coin/{id}": {
       "put": {
         "tags": [
           "Coin"
@@ -394,6 +406,21 @@
             "nullable": true
           },
           "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "votes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "lastDayVotes": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isVoted": {
+            "type": "boolean"
+          },
+          "logo": {
             "type": "string",
             "nullable": true
           }
