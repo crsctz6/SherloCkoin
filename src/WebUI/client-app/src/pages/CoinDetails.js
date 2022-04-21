@@ -1,82 +1,21 @@
-import React from 'react'
+import React, { useState,useEffect  }  from 'react'
 import CoinDetailsComponent from '../components/CoinDetailsComponent/CoinDetailsComponent'
 import TableComponent from '../components/TableComponent/TableComponent'
-import { Button } from '../elements/HeaderButton'
 import {
   useParams
 } from "react-router-dom";
-const tableData = [
-  {
-    no: "1",
-    logo: "Logo",
-    naming: "Ethereum",
-    cap: "$ 300,001,69",
-    price: "$ 41,001",
-    launch: "12 days",
-    votes: "511,000",
-    button: <Button tableButton={true}>Vote</Button>,
-  },
-  {
-    no: "2",
-    logo: "Logo",
-    naming: "Ethereum",
-    cap: "$ 300,001,69",
-    price: "$ 41,001",
-    launch: "12 days",
-    votes: "511,000",
-    button: <Button tableButton={true}>Vote</Button>,
-  },
-  {
-    no: "3",
-    logo: "Logo",
-    naming: "Ethereum",
-    cap: "$ 300,001,69",
-    price: "$ 41,001",
-    launch: "12 days",
-    votes: "511,000",
-    button: <Button tableButton={true}>Vote</Button>,
-  },
-  {
-    no: "4",
-    logo: "Logo",
-    naming: "Ethereum",
-    cap: "$ 300,001,69",
-    price: "$ 41,001",
-    launch: "12 days",
-    votes: "511,000",
-    button: <Button tableButton={true}>Vote</Button>,
-  },
-  {
-    no: "5",
-    logo: "Logo",
-    naming: "Ethereum",
-    cap: "$ 300,001,69",
-    price: "$ 41,001",
-    launch: "12 days",
-    votes: "511,000",
-    button: <Button tableButton={true}>Vote</Button>,
-  },
-  {
-    no: "6",
-    logo: "Logo",
-    naming: "Ethereum",
-    cap: "$ 300,001,69",
-    price: "$ 41,001",
-    launch: "12 days",
-    votes: "511,000",
-    button: <Button tableButton={true}>Vote</Button>,
-  },
-  {
-    no: "7",
-    logo: "Logo",
-    naming: "Ethereum",
-    cap: "$ 300,001,69",
-    price: "$ 41,001",
-    launch: "12 days",
-    votes: "511,000",
-    button: <Button tableButton={true}>Vote</Button>,
-  },
-];
+import {CoinClient} from "../components/SheloCkoinApi.ts"
+import configData from "./../config.json"
+
+const SERVER_URL = configData.REACT_APP_SERVER_URL;
+
+
+const callApi = async (coinId, userIP) => {
+  let client = new CoinClient(SERVER_URL);
+  let response = await client.getCoinDetails(coinId, userIP);
+  return response;
+};
+
 
 const tableHead = [
   "#",
@@ -89,15 +28,24 @@ const tableHead = [
 ];
 const coinsType = ["Top Coins", "Coins"];
 
-function CoinDetails() {
+function CoinDetails(params) {
+  const [coinDetails, setCoinDetails] = useState();
   const {id} = useParams();
-  console.log(id)
+
+  useEffect(() => {
+      callApi(id, params.userIP).then(res => {
+        setCoinDetails(res)
+      }
+        );
+  }, [id, params.userIP]);
+
+
   return (
       <>
-        <CoinDetailsComponent/>
+        {coinDetails && <CoinDetailsComponent coinDetails={coinDetails}/>}
         <TableComponent
         tableHead={tableHead}
-        tableData={tableData}
+        tableData={params.coins}
         coinsType={coinsType[0]}
       />
     </>

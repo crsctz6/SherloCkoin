@@ -26,21 +26,22 @@ import telegram from '../../photos/telegram.png';
 import twitter from '../../photos/twitter.png';
 import discord from '../../photos/discord.png';
 import coinLogo from '../../photos/bnb.png';
-function CoinDetailsComponent() {
+function CoinDetailsComponent(props) {
+    let details = props.coinDetails;
   return (
     <CoinDetailsContainer>
         <CoinOverviewWrapper>
             <CoinOverviewTopContainer>
-                <CoinLogo src={coinLogo}/>
+                <CoinLogo src={details.logo} />
                 <CoinData>
                     <Symbol>
-                        BNB
+                    {details.symbol}
                     </Symbol>
                     <Address>
-                    0xa0b73e1ff0b80914ab6fe0444e65848c4c34450b
+                    {details.contractAddress}
                     </Address>
                     <FullName>
-                        Binance Coin
+                    {details.name}
                     </FullName>
                 </CoinData>
             </CoinOverviewTopContainer>
@@ -51,10 +52,7 @@ function CoinDetailsComponent() {
                     <DiscordLogo src={discord}/>
                 </SocialContainer>
                 <Description>
-                     Puli (PULI) delivers simple yet very addicting P2E games supported by a novel NFT system. The first game, Puli Runner, was successfully launched on 31 January 2022. The team has also acquired a gaming studio for the development of future Play-to-Earn games. In addition, the token is supported by Lightspeed Crypto Services, LLC to support mobile game support on Android and IOS.
-                     The purpose and key features of the token include a 10% Buy and 10% Sell tax that are used to fund aggressive marketing, game development, and stable liquidity. In addition, the asset can be staked for added earnings with instructions available at their website.
-                     Puli (PULI) delivers simple yet very addicting P2E games supported by a novel NFT system. The first game, Puli Runner, was successfully launched on 31 January 2022. The team has also acquired a gaming studio for the development of future Play-to-Earn games. In addition, the token is supported by Lightspeed Crypto Services, LLC to support mobile game support on Android and IOS.
-                   The purpose and key features of the token include a 10% Buy and 10% Sell tax that are used to fund aggressive marketing, game development, and stable liquidity. In addition, the asset can be staked for added earnings with instructions available at their website.
+                    {details.description}
                 </Description>
             </CoinOverviewBottomContainer>
         </CoinOverviewWrapper>
@@ -106,7 +104,7 @@ function CoinDetailsComponent() {
                                     Votes 
                                 </LeftSide>
                                 <RightSide>
-                                    51,393 
+                                {details.votes}
                                 </RightSide>
                     </CoinInfoLine>
                     <CoinInfoLine>
@@ -115,7 +113,7 @@ function CoinDetailsComponent() {
                                  </LeftSide>
 
                                 <RightSide>
-                                    1932
+                                {details.lastDayVotes}
                                 </RightSide>
                     </CoinInfoLine>
                     <CoinInfoLine>
@@ -123,7 +121,7 @@ function CoinDetailsComponent() {
                                 Listing Status
                                 </LeftSide>
                                 <RightSide>
-                                Listed
+                                {details.isInPresale ? 'Listed' : 'Not Listed'}
                                 </RightSide>
                     </CoinInfoLine>
                     <CoinInfoLine>
@@ -131,7 +129,7 @@ function CoinDetailsComponent() {
                                 Launch Date
                                 </LeftSide>
                                 <RightSide>
-                                19/02/2022
+                                {new Date(details.launchDate).toLocaleDateString()}
                                 </RightSide>
                     </CoinInfoLine>
             </Analytics>

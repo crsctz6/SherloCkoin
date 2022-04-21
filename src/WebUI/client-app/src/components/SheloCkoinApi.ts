@@ -17,7 +17,7 @@ export class CoinClient {
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
     }
 
-    getCoinsWithPagination(pageNumber: number | undefined, pageSize: number | undefined, uaserIP: string | null | undefined): Promise<PaginatedListOfCoinListedDTO> {
+    getCoinsWithPagination(pageNumber: number | undefined, pageSize: number | undefined, userIP: string | null | undefined): Promise<PaginatedListOfCoinListedDTO> {
         let url_ = this.baseUrl + "/api/Coin?";
         if (pageNumber === null)
             throw new Error("The parameter 'pageNumber' cannot be null.");
@@ -27,8 +27,8 @@ export class CoinClient {
             throw new Error("The parameter 'pageSize' cannot be null.");
         else if (pageSize !== undefined)
             url_ += "PageSize=" + encodeURIComponent("" + pageSize) + "&";
-        if (uaserIP !== undefined && uaserIP !== null)
-            url_ += "UaserIP=" + encodeURIComponent("" + uaserIP) + "&";
+        if (userIP !== undefined && userIP !== null)
+            url_ += "UserIP=" + encodeURIComponent("" + userIP) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <RequestInit>{
@@ -97,11 +97,14 @@ export class CoinClient {
         return Promise.resolve<number>(<any>null);
     }
 
-    getCoinDetails(id: number): Promise<CoinDetailsDTO> {
-        let url_ = this.baseUrl + "/api/Coin/{id}";
+    getCoinDetails(id: number, userIP: string | null): Promise<CoinDetailsDTO> {
+        let url_ = this.baseUrl + "/api/Coin/{id}/{userIP}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        if (userIP === undefined || userIP === null)
+            throw new Error("The parameter 'userIP' must be defined.");
+        url_ = url_.replace("{userIP}", encodeURIComponent("" + userIP));
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ = <RequestInit>{
@@ -331,6 +334,10 @@ export interface CoinDetailsDTO {
     telegramLink?: string | undefined;
     twitterLink?: string | undefined;
     discordLink?: string | undefined;
+    votes?: number;
+    lastDayVotes?: number;
+    isVoted?: boolean;
+    logo?: string | undefined;
 }
 
 export interface CreateCoinCommand {

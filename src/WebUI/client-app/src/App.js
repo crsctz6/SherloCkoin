@@ -30,7 +30,6 @@ const getUserData = async () => {
 };
 
 const callApi = async (userIp) => {
-  console.log(SERVER_URL)
   let client = new CoinClient(SERVER_URL);
   let response = await client.getCoinsWithPagination(1,10,userIp);
   return response;
@@ -44,14 +43,16 @@ function App() {
   function handleVoteClick(item) {
     voteRequest(userIp, item.id).then(res => 
       {
-        console.log(res);
         setWasVote(res);
       });
   }
 
 
   useEffect(() => {
-    getUserData().then(res => setUserIp(res));
+    getUserData().then(res => 
+      {
+      setUserIp(res);
+    });
   }, []);
   useEffect(() => {
     callApi(userIp).then(data => 
@@ -64,14 +65,13 @@ function App() {
     });
   }, [userIp, wasVote]);
 
- 
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage coins = {coins} />} />
-        <Route path="details/:id" element={<CoinDetails />} />
-        <Route path="listed" element={<GetListed />} />
+        <Route path="details/:id" element={<CoinDetails coins = {coins} userIP = {userIp}  />} />
+        <Route path="listed" element={<GetListed  />} />
       </Routes>
       <FooterComponent />
     </BrowserRouter>
