@@ -2,6 +2,9 @@ import React from 'react'
 import CoinDetailsComponent from '../components/CoinDetailsComponent/CoinDetailsComponent'
 import TableComponent from '../components/TableComponent/TableComponent'
 import { Button } from '../elements/HeaderButton'
+import {
+  useParams
+} from "react-router-dom";
 const tableData = [
   {
     no: "1",
@@ -87,6 +90,8 @@ const tableHead = [
 const coinsType = ["Top Coins", "Coins"];
 
 function CoinDetails() {
+  const {id} = useParams();
+  console.log(id)
   return (
       <>
         <CoinDetailsComponent/>

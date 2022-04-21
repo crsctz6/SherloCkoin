@@ -87,6 +87,36 @@
       }
     },
     "/api/Coin/{id}": {
+      "get": {
+        "tags": [
+          "Coin"
+        ],
+        "operationId": "Coin_GetCoinDetails",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoinDetailsDTO"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "Coin"
@@ -271,9 +301,12 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "logo": {
             "type": "string",
-            "format": "byte",
             "nullable": true
           },
           "name": {
@@ -302,6 +335,67 @@
           },
           "isVoted": {
             "type": "boolean"
+          }
+        }
+      },
+      "CoinDetailsDTO": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "symbol": {
+            "type": "string",
+            "nullable": true
+          },
+          "network": {
+            "type": "string",
+            "nullable": true
+          },
+          "isInPresale": {
+            "type": "boolean"
+          },
+          "contractAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "launchDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "customChartLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "customSwapLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "websiteLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "telegramLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "twitterLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "discordLink": {
+            "type": "string",
+            "nullable": true
           }
         }
       },

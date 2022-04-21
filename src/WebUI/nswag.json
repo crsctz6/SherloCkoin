@@ -51,8 +51,8 @@
       "startupType": null,
       "allowNullableBodyParameters": true,
       "useHttpAttributeNameAsOperationId": false,
-      "output": null,
-      "outputType": "Swagger2",
+      "output": "wwwroot/api/specification.json",
+      "outputType": "OpenApi3",
       "newLineBehavior": "Auto",
       "assemblyPaths": [
         "bin/Debug/net5.0/SherloCkoin.WebUI.dll"

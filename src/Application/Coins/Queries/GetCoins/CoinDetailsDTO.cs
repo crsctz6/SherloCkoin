@@ -5,8 +5,9 @@ using System;
 
 namespace SherloCkoin.Application.Coins.Queries.GetCoins
 {
-    public class CoinDTO : IMapFrom<Coin>
+    public class CoinDetailsDTO : IMapFrom<Coin>
     {
+        public  int Id { get; set; }
         public string Name { get; set; }
         public string Symbol { get; set; }
         public string Network { get; set; }
@@ -22,7 +23,7 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoins
         public string DiscordLink { get; set; }
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<Coin, CoinDTO>();
+            profile.CreateMap<Coin, CoinDetailsDTO>();
         }
     }
 }

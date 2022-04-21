@@ -9,8 +9,11 @@ import {
   TableWrapper,
   ComponentContainer,
 } from "./TableComponentStyleElements";
+import { useNavigate  } from 'react-router-dom';
 
 function TableComponent({ tableData, tableHead, coinsType }) {
+
+  const navigate = useNavigate();
   return (
     <div>
       {coinsType === "Top Coins" ? (
@@ -27,7 +30,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
               </Thead>
               <Tbody>
                 {Object.values(tableData).map((obj, index) => (
-                  <Tr key={index}>
+                  <Tr key={index} onClick={() => navigate('/details/' + obj.id)} >
                     {Object.values(obj).map((value, index) => (
                       <>
                         <Td key={index}>{value}</Td>
