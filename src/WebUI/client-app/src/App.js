@@ -70,7 +70,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage coins = {coins} />} />
-        <Route path="details/:id" element={<CoinDetails coins = {coins} userIP = {userIp}  />} />
+        <Route path="details/:id" element={<CoinDetails coins = {coins} userIP = {userIp} handleVote = {handleVoteClick} />} />
         <Route path="listed" element={<GetListed  />} />
       </Routes>
       <FooterComponent />

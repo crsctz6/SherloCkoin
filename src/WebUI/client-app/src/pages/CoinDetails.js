@@ -28,24 +28,26 @@ const tableHead = [
 ];
 const coinsType = ["Top Coins", "Coins"];
 
-function CoinDetails(params) {
+function CoinDetails(props) {
   const [coinDetails, setCoinDetails] = useState();
   const {id} = useParams();
 
   useEffect(() => {
-      callApi(id, params.userIP).then(res => {
+      callApi(id, props.userIP).then(res => {
         setCoinDetails(res)
       }
         );
-  }, [id, params.userIP]);
+  }, [id, props.userIP]);
 
 
   return (
       <>
-        {coinDetails && <CoinDetailsComponent coinDetails={coinDetails}/>}
+        {coinDetails && <CoinDetailsComponent 
+          coinDetails={coinDetails}
+          handleVote = {props.handleVoteClick} />}
         <TableComponent
         tableHead={tableHead}
-        tableData={params.coins}
+        tableData={props.coins}
         coinsType={coinsType[0]}
       />
     </>

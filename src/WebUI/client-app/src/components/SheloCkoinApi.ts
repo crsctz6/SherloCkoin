@@ -313,7 +313,6 @@ export interface CoinListedDTO {
     name?: string | undefined;
     marketCap?: number;
     price?: number;
-    changedPrice?: number;
     launch?: number;
     votes?: number;
     isVoted?: boolean;

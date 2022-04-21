@@ -16,7 +16,6 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsList
         public string Name { get; set; }
         public double MarketCap { get; set; }
         public double Price { get; set; }
-        public double ChangedPrice { get; set; }
         public long Launch { get; set; }
         public int Votes { get; set; }
         public bool IsVoted { get; set; }

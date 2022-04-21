@@ -333,10 +333,6 @@
             "type": "number",
             "format": "double"
           },
-          "changedPrice": {
-            "type": "number",
-            "format": "double"
-          },
           "launch": {
             "type": "integer",
             "format": "int64"
