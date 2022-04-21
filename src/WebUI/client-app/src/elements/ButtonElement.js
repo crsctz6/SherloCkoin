@@ -17,5 +17,5 @@ export const Button = styled.button`
   width: ${(props) => props.width ?? "auto"};
   height: ${(props) => props.height ?? "auto"};
   cursor: pointer;
-
+  
 `;

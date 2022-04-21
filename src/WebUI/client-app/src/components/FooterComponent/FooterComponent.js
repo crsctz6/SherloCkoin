@@ -20,14 +20,16 @@ import telegram from '../../photos/telegram.png';
 import twitter from '../../photos/twitter.png';
 import mail from '../../photos/email.png';
 import discord from '../../photos/discord.png';
+import { Link } from 'react-router-dom';
         
 function FooterComponent() {
   return (
    <FooterWrapper>
      
        <FooterContainer>
-           <Logo src={logo}/>
-
+           <Link to='/'>
+            <Logo src={logo}/>
+           </Link>
        </FooterContainer>
        <FooterContainer>
            <RightsContainer>
@@ -46,12 +48,16 @@ function FooterComponent() {
         <FooterContainer>
             <SocialContainer>
                 <SocialList>
-                    <SocialElement>
-                        Get Listed
-                    </SocialElement>
-                    <SocialElement>
-                        Home
-                    </SocialElement>
+                    <Link to='/listed'>
+                        <SocialElement>
+                            Get Listed
+                        </SocialElement>
+                    </Link>
+                    <Link to='/'>
+                        <SocialElement>
+                            Home
+                        </SocialElement>
+                    </Link>
                     <SocialElement>
                         Contact
                     </SocialElement>
