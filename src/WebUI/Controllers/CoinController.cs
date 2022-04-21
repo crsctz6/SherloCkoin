@@ -8,6 +8,7 @@ using SherloCkoin.Application.Coins.Commands.CreateCoin;
 using SherloCkoin.Application.Coins.Commands.DeleteCoin;
 using SherloCkoin.Application.Coins.Commands.UpdateCoin;
 using SherloCkoin.Application.Coins.Queries.GetCoinsList;
+using SherloCkoin.Application.Coins.Queries.GetCoinsDetails;
 
 namespace SherloCkoin.WebUI.Controllers
 {
@@ -18,6 +19,13 @@ namespace SherloCkoin.WebUI.Controllers
         {
             return await Mediator.Send(query);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CoinDetailsDTO>> GetCoinDetails(int id)
+        {
+            return await Mediator.Send(new GetCoinsDetailsById() { CoinId = id});
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreateCoinCommand command)

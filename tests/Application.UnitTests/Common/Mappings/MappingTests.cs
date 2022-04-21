@@ -30,7 +30,7 @@ namespace SherloCkoin.Application.UnitTests.Common.Mappings
         }
         
         [Test]
-        [TestCase(typeof(Coin), typeof(CoinDTO))]
+        [TestCase(typeof(Coin), typeof(CoinDetailsDTO))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
             var instance = GetInstanceOf(source);
