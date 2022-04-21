@@ -25,7 +25,6 @@ import {CoinDetailsContainer,
 import telegram from '../../photos/telegram.png';
 import twitter from '../../photos/twitter.png';
 import discord from '../../photos/discord.png';
-import coinLogo from '../../photos/bnb.png';
 
 function CoinDetailsComponent(props) {
     console.log(props);
@@ -49,15 +48,21 @@ function CoinDetailsComponent(props) {
             </CoinOverviewTopContainer>
             <CoinOverviewBottomContainer>
                 <SocialContainer>
-                    <a  to={details.telegramLink}>
-                        <TelegramLogo src={telegram}/>
-                    </a>
-                    <a to={details.twitterLink}>
-                        <TwitterLogo src={twitter}/>    
-                    </a>
-                    <a to={details.twitterLink}>
-                        <DiscordLogo src={details.discordLink}/>   
-                    </a>
+                    {details.telegramLink && 
+                        <a href={details.telegramLink}>
+                            <TelegramLogo src={telegram}/>
+                        </a>
+                    }
+                    {details.twitterLink && 
+                        <a href={details.twitterLink}>
+                            <TwitterLogo src={twitter}/>    
+                        </a>
+                    }
+                    {details.discordLink && 
+                        <a href={details.discordLink}>
+                            <DiscordLogo src={discord}/>   
+                        </a>
+                    }
                 </SocialContainer>
                 <Description>
                     {details.description}

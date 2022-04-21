@@ -55,11 +55,11 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                 </Tr>
               </Thead>
               <Tbody>
-                {Object.values(tableData).map((obj, index) => (
-                  <Tr key={index}>
+                {Object.values(tableData).map((obj) => (
+                  <Tr key={obj.id}>
                     {Object.values(obj).map((value, index) => (
                       <Fragment key={index}>
-                        <Td>{value}</Td>
+                        <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td>
                       </Fragment>
                     ))}
                   </Tr>

@@ -25,8 +25,7 @@ import { Link } from 'react-router-dom';
 function FooterComponent() {
   return (
    <FooterWrapper>
-     
-       <FooterContainer>
+        <FooterContainer>
            <Link to='/'>
             <Logo src={logo}/>
            </Link>
