@@ -2,7 +2,8 @@
 
 export  const Backgrounds = {
     blueRadial: 'radial-gradient(66.9% 82.39% at 23.93% 33.1%, #243B55 0%, #0B1B2E 100%);',
-    button:'linear-gradient(113.22deg, #4463E0 34.99%, rgba(5, 46, 209, 0) 100%);',
+    button:'linear-gradient(115.77deg, #2862A8 33.72%, rgba(68, 99, 224, 0) 138.48%);',
+    buttonHover:'linear-gradient(115.77deg, #3580DB 33.72%, rgba(25, 64, 220, 0) 138.48%);',
     table: '#0B1B2E',
     header:'#182B43',
     footer: '#08182B',
