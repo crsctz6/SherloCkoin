@@ -33,10 +33,9 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoinsWithPagination
 
         public async Task<PaginatedList<CoinListedDTO>> Handle(GetCoinsWithPaginationQuery request, CancellationToken cancellationToken)
         {
-            var userVotes = await _context.UsersVotes.Where(uv => uv.UserIP == request.UaserIP).ToListAsync();
             return await _context.Coins
                 .OrderBy(x => x.Name)
-                .ProjectTo<CoinListedDTO>(_mapper.ConfigurationProvider, new { userVotes = userVotes })
+                .ProjectTo<CoinListedDTO>(_mapper.ConfigurationProvider, new  { userIP =request.UaserIP})
                 .PaginatedListAsync(request.PageNumber, request.PageSize);
         }
     }

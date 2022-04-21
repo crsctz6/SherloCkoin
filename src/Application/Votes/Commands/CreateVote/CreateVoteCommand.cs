@@ -40,10 +40,7 @@ namespace SherloCkoin.Application.Votes.Commands.CreateVote
                 UserIP = request.UserIP,
                 Vote = entity
             };
-            // entity.DomainEvents.Add(new CoinCreatedEvent(entity));
-
-            _context.UsersVotes.Add(userVotes);
-
+            coin.UsersVotes.Add(userVotes);
             await _context.SaveChangesAsync(cancellationToken);
 
             return entity.Id;
