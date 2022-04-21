@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import {
   TableHeading,
   Table,
@@ -15,7 +15,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
 
   const navigate = useNavigate();
   return (
-    <div>
+    <>
       {coinsType === "Top Coins" ? (
         <ComponentContainer>
           <TableHeading>{coinsType}</TableHeading>
@@ -29,12 +29,12 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                 </Tr>
               </Thead>
               <Tbody>
-                {Object.values(tableData).map((obj, index) => (
-                  <Tr key={index} onClick={() => navigate('/details/' + obj.id)} >
+                {Object.values(tableData).map((obj) => (
+                  <Tr key={obj.id} onClick={() => navigate('/details/' + obj.id)} >
                     {Object.values(obj).map((value, index) => (
-                      <>
-                        <Td key={index}>{value}</Td>
-                      </>
+                      <Fragment key={index}>
+                        <Td>{value}</Td>
+                      </Fragment>
                     ))}
                   </Tr>
                 ))}
@@ -49,7 +49,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
             <Table>
               <Thead>
                 <Tr>
-                  {tableHead.map((item, index) => (
+                  {tableHead.map((item, index ) => (
                     <th key={index}>{item}</th>
                   ))}
                 </Tr>
@@ -58,9 +58,9 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                 {Object.values(tableData).map((obj, index) => (
                   <Tr key={index}>
                     {Object.values(obj).map((value, index) => (
-                      <>
-                        <Td key={index}>{value}</Td>
-                      </>
+                      <Fragment key={index}>
+                        <Td>{value}</Td>
+                      </Fragment>
                     ))}
                   </Tr>
                 ))}
@@ -69,7 +69,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
           </TableWrapper>
         </ComponentContainer>
       )}
-    </div>
+    </>
   );
 }
 

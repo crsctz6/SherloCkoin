@@ -16,7 +16,6 @@ export const TableHeading = styled.p`
   color: ${FontColors.white};
   font-family: ${FontsFamilies.rest};
   font-size: ${FontSize.headersAndButtons};
-  //positioning and spacing
   text-align: left;
   margin-bottom:20px ;
 
@@ -25,34 +24,29 @@ export const TableHeading = styled.p`
   }
 `;
 export const TableWrapper = styled.div`
-  //borders
   border: 1.5px solid;
   border-image: ${({ top }) =>
     top
       ? `${Borders.orange}`
       : "linear-gradient(212.2deg, #625959 19.32%, rgba(98, 89, 89, 0) 90.56%)"};   
   border-image-slice: 1;
-  //positioning and spacing
-  white-space: nowrap;
   margin: 0 auto;
 
   @media screen and (max-width: 1585px) {
     width: auto;
     overflow-x: scroll;
+    white-space: nowrap;
   }
 `;
 
 export const Table = styled.table`
-  //colors
   background: ${Backgrounds.table};
   color: ${FontColors.white};
-  //borders
   border-collapse: collapse;
   //font
   font-size: ${FontSize.text};
   font-family: ${FontsFamilies.rest};
   font-weight: ${FontWeights.medium};
-  //positioning and spacing
   width: 100%;
   position: relative;
   table-layout: auto;
@@ -62,14 +56,13 @@ export const Tr = styled.tr`
   border-bottom: 1px solid ${Borders.solidGrey};
   height: 50px;
   th:nth-child(3) {
-    position: -webkit-sticky;
+    
     position: sticky;
     left: 0;
 
     background: ${Backgrounds.table};
   }
   Td:nth-child(3) {
-    position: -webkit-sticky;
     position: sticky;
     left: 0px;
 
