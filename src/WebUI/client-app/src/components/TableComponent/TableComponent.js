@@ -3,11 +3,12 @@ import {
   TableHeading,
   Table,
   Thead,
-  Tr,
+  Tbr,
   Tbody,
   Td,
   TableWrapper,
   ComponentContainer,
+  Thr
 } from "./TableComponentStyleElements";
 import { useNavigate  } from 'react-router-dom';
 import { Button } from "../../elements/ButtonElement";
@@ -15,6 +16,10 @@ import { Button } from "../../elements/ButtonElement";
 function TableComponent({ tableData, tableHead, coinsType }) {
 
   const navigate = useNavigate();
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0, 
+      behavior: 'smooth'})}
   return (
     <>
       {coinsType === "Top Coins" ? (
@@ -23,27 +28,29 @@ function TableComponent({ tableData, tableHead, coinsType }) {
           <TableWrapper top={true}>
             <Table>
               <Thead>
-                <Tr>
+                <Thr>
                   {tableHead.map((item, index) => (
                     <th key={index}>{item}</th>
                   ))}
-                </Tr>
+                </Thr>
               </Thead>
               <Tbody>
                 {Object.values(tableData).map((obj) => (
-                  <Tr key={obj.id}  >
+                  <Tbr key={obj.id}  >
                     {Object.entries(obj)
                       .filter(([key, value]) => key !== 'isVoted' && key !== 'isPromoted')
                       .map(([key, value], index) => (
                       <Fragment key={index}>
                         {
                           value.type !== Button  ?
-                        <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td> :
-                        <Td>{value}</Td>
+                        <Td onClick={() => {navigate('/details/' + obj.id); scrollToTop()}}>{value}</Td> :
+                        <Td>
+                           {value}
+                          </Td>
                         }
                       </Fragment>
                     ))}
-                  </Tr>
+                  </Tbr>
                 ))}
               </Tbody>
             </Table>
@@ -55,15 +62,15 @@ function TableComponent({ tableData, tableHead, coinsType }) {
           <TableWrapper top={false}>
             <Table>
               <Thead>
-                <Tr>
+                <Thr>
                   {tableHead.map((item, index ) => (
                     <th key={index}>{item}</th>
                   ))}
-                </Tr>
+                </Thr>
               </Thead>
               <Tbody>
                 {Object.values(tableData).map((obj) => (
-                  <Tr key={obj.id}>
+                  <Tbr key={obj.id}>
                     {Object.entries(obj)
                       .filter(([key, value]) => key !== 'isVoted' && key !== 'isPromoted')
                       .map(([key, value], index) =>  (
@@ -75,7 +82,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                         }
                       </Fragment>
                     ))}
-                  </Tr>
+                  </Tbr>
                 ))}
               </Tbody>
             </Table>
@@ -85,5 +92,6 @@ function TableComponent({ tableData, tableHead, coinsType }) {
     </>
   );
 }
+
 
 export default TableComponent;

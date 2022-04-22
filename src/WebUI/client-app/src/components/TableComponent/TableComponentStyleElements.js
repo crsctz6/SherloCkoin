@@ -21,7 +21,7 @@ export const TableHeading = styled.p`
 
   @media screen and (max-width: 1100px) {
     font-size: ${FontSize.biggerText};
-  }
+  };
 `;
 export const TableWrapper = styled.div`
   border: 1.5px solid;
@@ -36,7 +36,7 @@ export const TableWrapper = styled.div`
     width: auto;
     overflow-x: scroll;
     white-space: nowrap;
-  }
+  };
 `;
 
 export const Table = styled.table`
@@ -50,27 +50,66 @@ export const Table = styled.table`
   position: relative;
   table-layout: auto;
 `;
-
-export const Tr = styled.tr`
+export const Tbody = styled.tbody`
+transition: all 0.2s ease-in-out;`;
+export const Thead = styled.thead`
+`;
+export const Tbr = styled.tr`
   border-bottom: 1px solid ${Borders.solidGrey};
   height: 50px;
-  th:nth-child(3) {
-    
-    position: sticky;
-    left: 0;
 
-    background: ${Backgrounds.table};
-  }
   Td:nth-child(3) {
     position: sticky;
     left: 0px;
-
-    background: ${Backgrounds.table};
+    @media screen and (max-width: 1100px) {
+      background:${Backgrounds.table}};
+     };
+  @media screen and (min-width: 1100px) {
+    &:hover {
+    box-shadow: 0px 3px 4px -6px grey;
+    background:#152B46;
+    Td:not(:last-child){
+      transition: all 0.3s ease-in-out;
+      transform:scale(1.3)
+    };
+    Td:nth-child(8)
+    {
+      transition: all 0.3s ease-in-out;
+      transform:scale(1.1)
+    };
+  };
   }
+ 
 `;
-export const Tbody = styled.tbody``;
-export const Thead = styled.thead``;
+
 export const Td = styled.td`
-  padding: 10px 4vw;
+  padding: 15px 4vw;
   text-align: center;
+  cursor:pointer;
+
+  &:hover {
+    border-top: 1px solid ${Borders.solidGrey};
+    border-bottom: 1px solid ${Borders.solidGrey} ;
+  };
+@media screen and (max-width: 1100px) {
+  padding: 15px 60px;
+  };
+  @media screen and (max-width: 550px) {
+  padding: 15px 30px;
+  };
 `;
+
+
+
+export const Thr = styled.tr`
+  border-bottom: 1px solid ${Borders.solidGrey};
+  height: 50px;
+  th:nth-child(3) {
+    position: sticky;
+    left: 0;
+    @media screen and (max-width: 1100px) {
+      background:${Backgrounds.table}
+    };
+  }
+    
+`

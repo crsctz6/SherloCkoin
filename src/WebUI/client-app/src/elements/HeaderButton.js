@@ -20,9 +20,9 @@ export const Button = styled.button`
   height: ${(props) => props.height ?? "auto"};
   transition: all 1000ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
   cursor: pointer;
-  :hover {
-  transform: scale(1.03);
-  background:${Backgrounds.buttonHover};
+   &:hover {
+    transform: scale(1.03);
+    background:${Backgrounds.buttonHover};
 }
   @media screen and (max-width:700px){
     max-width:90px;

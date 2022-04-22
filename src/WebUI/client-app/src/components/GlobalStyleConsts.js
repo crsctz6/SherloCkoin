@@ -15,7 +15,8 @@ export const Borders = {
     grey:'linear-gradient(212.2deg, #625959 19.32%, rgba(98, 89, 89, 0) 90.56%);',
     reverseGrey:'linear-gradient(105.42deg, #898585 24.86%, rgba(98, 89, 89, 0) 112.22%)',
     solidGrey: '#625959',
-    solidOrange: '#FF7147'
+    solidOrange: '#FF7147',
+    lightGrey:'#D8D0D0'
 };
 
 export const FontSize= {

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {FontColors , Borders, Backgrounds} from '../components/GlobalStyleConsts'
+import {FontColors,FontSize, Borders, Backgrounds} from '../components/GlobalStyleConsts'
 
 export  const Input =styled.input`
   font-size: 14px;
@@ -70,3 +70,24 @@ export  const Input =styled.input`
   color:${Borders.solidOrange};
   border-radius: 50%;
  `
+export const ButtonInput = styled.input`
+  background: ${Backgrounds.button};
+  color: ${FontColors.white};
+  font-size: ${(props) => props ?? FontSize.text};
+  padding: 10px 20px;
+  border-image: ${({ tableButton }) =>
+    tableButton ? "transparent" : Borders.orange};
+  border-radius: 5px;
+  border-image-slice:1;
+  width: ${(props) => props.width ?? "auto"};
+  height: ${(props) => props.height ?? "auto"};
+  cursor: pointer;
+  transition: all 1000ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+  
+  margin:50px 0;
+  
+  &:hover {
+    transform: scale(1.03);
+    background:${Backgrounds.buttonHover};
+  };
+`

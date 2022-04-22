@@ -1,7 +1,7 @@
 import React from 'react'
 import GetListed from '../../pages/GetListed'
 import {FormWrapper,HeadingContainer,Title,Paragraph,Form,Label,Plus,UploadImg} from './RegistrationFormStyleElements'
-import {Input,FileInput,DateInput,RadioInput,TextArea} from '../../elements/InputElement'
+import {Input,FileInput,DateInput,RadioInput,ButtonInput,TextArea} from '../../elements/InputElement'
 import addImg from '../../photos/plus.png'
 import {useForm} from "react-hook-form"
 function RegistrationForm() {
@@ -54,7 +54,12 @@ function RegistrationForm() {
             <Input {...register("telegramLink")} width='400px'/>
             <Label>Discord Link</Label>
             <Input {...register("discordLink")} width='400px'/>
-            <Input type="submit" value="Submit" />
+            <ButtonInput type="submit"
+                         value="Submit"
+                         width='170px'
+                         height='50px'
+                         font-size='18px'
+                         tableButton={false}/>
         </Form>
 
 
