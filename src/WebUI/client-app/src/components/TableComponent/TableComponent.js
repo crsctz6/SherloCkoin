@@ -32,7 +32,9 @@ function TableComponent({ tableData, tableHead, coinsType }) {
               <Tbody>
                 {Object.values(tableData).map((obj) => (
                   <Tr key={obj.id}  >
-                    {Object.values(obj).map((value, index) => (
+                    {Object.entries(obj)
+                      .filter(([key, value]) => key != 'isVoted' && key != 'isPromoted')
+                      .map(([key, value], index) => (
                       <Fragment key={index}>
                         {
                           value.type != Button  ?
@@ -62,7 +64,9 @@ function TableComponent({ tableData, tableHead, coinsType }) {
               <Tbody>
                 {Object.values(tableData).map((obj) => (
                   <Tr key={obj.id}>
-                    {Object.values(obj).map((value, index) => (
+                    {Object.entries(obj)
+                      .filter(([key, value]) => key != 'isVoted' && key != 'isPromoted')
+                      .map(([key, value], index) =>  (
                       <Fragment key={index}>
                          {
                           value.type != Button  ?
