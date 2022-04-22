@@ -3,12 +3,18 @@ import GetListed from '../../pages/GetListed'
 import {FormWrapper,HeadingContainer,Title,Paragraph,Form,Label,Plus,UploadImg} from './RegistrationFormStyleElements'
 import {Input,FileInput,DateInput,RadioInput,TextArea} from '../../elements/InputElement'
 import addImg from '../../photos/plus.png'
+import {useForm} from "react-hook-form"
 function RegistrationForm() {
 
   const hiddenFileInput = React.useRef(null);
   const handleClick = event => {
     hiddenFileInput.current.click();
   };
+  const {register, handleSubmit} = useForm();
+  const onSubmit = (newCoin) =>
+  {
+    console.log(newCoin);
+  }
   return (
     <FormWrapper>
         <HeadingContainer>
@@ -19,9 +25,9 @@ function RegistrationForm() {
                  Fill in the form in order to get listed to SherloCkoin. After submiting the data, your coin will be listed on our portal.
             </Paragraph>
         </HeadingContainer>
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <Label>Logo</Label>
-            <FileInput  onClick={handleClick}>
+            <FileInput {...register("logo")}  onClick={handleClick}>
             <Plus src={addImg}/>
             <UploadImg>Update Image</UploadImg>
                 <input type="file"
@@ -29,25 +35,26 @@ function RegistrationForm() {
               style={{display:'none'}} />
             </FileInput>
             <Label>Name</Label>
-            <Input/>
+            <Input {...register("name")}/>
             <Label>Symbol</Label>
-            <Input/>
+            <Input {...register("symbol")}/>
             <Label>Description</Label>
-            <TextArea width='60%' height='130px'/>
+            <TextArea {...register("description")} width='60%' height='130px'/>
             <Label>Contract Address</Label>
-            <Input width='400px'/>
+            <Input {...register("contractAddress")}  width='400px'/>
             <Label>Launch Date</Label>
-            <DateInput type={'date'} width='250px'/>
+            <DateInput {...register("launchDate")} type={'date'} width='250px'/>
             <Label>Presale Phase?</Label>
-            <RadioInput type={'radio'} width='400px'/>
+            <RadioInput {...register("isInPresale")} type={'radio'} width='400px'/>
             <Label>Website Link</Label>
-            <Input width='400px'/>
+            <Input {...register("websiteLink")} width='400px'/>
             <Label>Twitter Link</Label>
-            <Input width='400px'/>
+            <Input {...register("twitterLink")} width='400px'/>
             <Label>Telegram Link</Label>
-            <Input width='400px'/>
+            <Input {...register("telegramLink")} width='400px'/>
             <Label>Discord Link</Label>
-            <Input width='400px'/>
+            <Input {...register("discordLink")} width='400px'/>
+            <Input type="submit" value="Submit" />
         </Form>
 
 

@@ -33,11 +33,11 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                 {Object.values(tableData).map((obj) => (
                   <Tr key={obj.id}  >
                     {Object.entries(obj)
-                      .filter(([key, value]) => key != 'isVoted' && key != 'isPromoted')
+                      .filter(([key, value]) => key !== 'isVoted' && key !== 'isPromoted')
                       .map(([key, value], index) => (
                       <Fragment key={index}>
                         {
-                          value.type != Button  ?
+                          value.type !== Button  ?
                         <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td> :
                         <Td>{value}</Td>
                         }
@@ -65,11 +65,11 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                 {Object.values(tableData).map((obj) => (
                   <Tr key={obj.id}>
                     {Object.entries(obj)
-                      .filter(([key, value]) => key != 'isVoted' && key != 'isPromoted')
+                      .filter(([key, value]) => key !== 'isVoted' && key !== 'isPromoted')
                       .map(([key, value], index) =>  (
                       <Fragment key={index}>
                          {
-                          value.type != Button  ?
+                          value.type !== Button  ?
                         <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td> :
                         <Td>{value}</Td>
                         }
