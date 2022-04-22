@@ -27,7 +27,6 @@ import twitter from '../../photos/twitter.png';
 import discord from '../../photos/discord.png';
 
 function CoinDetailsComponent(props) {
-    console.log(props);
     let details = props.coinDetails;
   return (
     <CoinDetailsContainer>
