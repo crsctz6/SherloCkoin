@@ -10,6 +10,7 @@ import {
   ComponentContainer,
 } from "./TableComponentStyleElements";
 import { useNavigate  } from 'react-router-dom';
+import { Button } from "../../elements/ButtonElement";
 
 function TableComponent({ tableData, tableHead, coinsType }) {
 
@@ -30,10 +31,14 @@ function TableComponent({ tableData, tableHead, coinsType }) {
               </Thead>
               <Tbody>
                 {Object.values(tableData).map((obj) => (
-                  <Tr key={obj.id} onClick={() => navigate('/details/' + obj.id)} >
+                  <Tr key={obj.id}  >
                     {Object.values(obj).map((value, index) => (
                       <Fragment key={index}>
+                        {
+                          value.type != Button  ?
+                        <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td> :
                         <Td>{value}</Td>
+                        }
                       </Fragment>
                     ))}
                   </Tr>
@@ -59,7 +64,11 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                   <Tr key={obj.id}>
                     {Object.values(obj).map((value, index) => (
                       <Fragment key={index}>
-                        <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td>
+                         {
+                          value.type != Button  ?
+                        <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td> :
+                        <Td>{value}</Td>
+                        }
                       </Fragment>
                     ))}
                   </Tr>
