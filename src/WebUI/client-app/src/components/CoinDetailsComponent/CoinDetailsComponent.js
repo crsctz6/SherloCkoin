@@ -27,6 +27,7 @@ import twitter from '../../photos/twitter.png';
 import discord from '../../photos/discord.png';
 
 function CoinDetailsComponent(props) {
+    console.log(props);
     let details = props.coinDetails;
   return (
     <CoinDetailsContainer>
@@ -147,7 +148,7 @@ function CoinDetailsComponent(props) {
             </Analytics>
             { details.isVoted == false && 
             <Button width='170px' height='50px' font-size='18px' tableButton={false} onClick={() => props.handleVote(details)} >
-                Vote {details.name}
+                Vote {details.symbol}
             </Button> }
         </AnalyticsAndButtonContainer>
     </CoinDetailsContainer>
