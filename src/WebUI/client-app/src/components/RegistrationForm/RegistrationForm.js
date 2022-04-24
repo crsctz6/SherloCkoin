@@ -35,13 +35,13 @@ function RegistrationForm() {
               style={{display:'none'}} />
             </FileInput>
             <Label>Name</Label>
-            <Input {...register("name")}/>
+            <Input {...register("name", { required: true })}/>
             <Label>Symbol</Label>
-            <Input {...register("symbol")}/>
+            <Input {...register("symbol", { required: true })}/>
             <Label>Description</Label>
             <TextArea {...register("description")} width='60%' height='130px'/>
             <Label>Contract Address</Label>
-            <Input {...register("contractAddress")}  width='400px'/>
+            <Input {...register("contractAddress", { required: true })}  width='400px'/>
             <Label>Launch Date</Label>
             <DateInput {...register("launchDate")} type={'date'} width='250px'/>
             <Label>Presale Phase?</Label>
