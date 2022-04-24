@@ -31,7 +31,20 @@ export const TableWrapper = styled.div`
       : "linear-gradient(212.2deg, #625959 19.32%, rgba(98, 89, 89, 0) 90.56%)"};   
   border-image-slice: 1;
   margin: 0 auto;
+  &:hover{
+    animation:${({ top }) =>
+      top
+        ?'pulsate 1s ease-in-out'
+        :'none' };
+      }
 
+  @keyframes pulsate {
+    0%{
+      box-shadow:
+        0 0 10px ${Borders.solidOrange},
+        0 0 20px ${Borders.solidGrey}
+    }
+  }
   @media screen and (max-width: 1585px) {
     width: auto;
     overflow-x: scroll;
@@ -87,8 +100,8 @@ export const Td = styled.td`
   cursor:pointer;
 
   &:hover {
-    border-top: 1px solid ${Borders.solidGrey};
-    border-bottom: 1px solid ${Borders.solidGrey} ;
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke ;
   };
 @media screen and (max-width: 1100px) {
   padding: 15px 60px;
