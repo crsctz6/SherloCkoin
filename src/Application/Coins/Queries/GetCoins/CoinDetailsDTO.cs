@@ -26,14 +26,22 @@ namespace SherloCkoin.Application.Coins.Queries.GetCoins
         public int LastDayVotes { get; set; }
         public bool IsVoted { get; set; }
         public string Logo { get; set; }
+        public CoinDetails CoinDetails { get; set; }
+        public double Price { get; set; }
+        public string Launch { get; set; }
+        public int MarketCap { get; set; }
         public void Mapping(Profile profile)
         {
             string userIP = "";
             profile.CreateMap<Coin, CoinDetailsDTO>()
                 .ForMember(d => d.Votes, opt => opt.MapFrom(c => c.Votes.Count))
-                .ForMember(d => d.LastDayVotes, opt => opt.MapFrom(c => c.UsersVotes.Count)).
-                ForMember(d => d.IsVoted, opt => opt.MapFrom(
-                    c => c.UsersVotes.Select(v => v.UserIP).Contains(userIP))); 
+                .ForMember(d => d.LastDayVotes, opt => opt.MapFrom(c => c.UsersVotes.Count))
+                .ForMember(d => d.CoinDetails, opt => opt.MapFrom(c => c.CoinDetails))
+                .ForMember(d => d.Price, opt => opt.MapFrom(c => c.CoinDetails.Price))
+                .ForMember(d => d.Launch, opt => opt.MapFrom(c => c.CoinDetails.Launch))
+                .ForMember(d => d.MarketCap, opt => opt.MapFrom(c => c.CoinDetails.MarketCap))
+                .ForMember(d => d.IsVoted, opt => opt.MapFrom(
+                    c => c.UsersVotes.Select(v => v.UserIP).Contains(userIP)));
         }
     }
 }

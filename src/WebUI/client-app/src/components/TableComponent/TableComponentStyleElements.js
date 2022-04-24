@@ -79,7 +79,6 @@ export const Tbr = styled.tr`
     };
   };
   }
- 
 `;
 
 export const Td = styled.td`
@@ -99,8 +98,6 @@ export const Td = styled.td`
   };
 `;
 
-
-
 export const Thr = styled.tr`
   border-bottom: 1px solid ${Borders.solidGrey};
   height: 50px;
@@ -111,5 +108,4 @@ export const Thr = styled.tr`
       background:${Backgrounds.table}
     };
   }
-    
-`
+`;

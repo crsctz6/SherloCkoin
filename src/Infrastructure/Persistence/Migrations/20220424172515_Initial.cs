@@ -47,32 +47,20 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Coins",
+                name: "CoinDetails",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Symbol = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Network = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsInPresale = table.Column<bool>(type: "bit", nullable: false),
-                    ContractAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LaunchDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CustomChartLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomSwapLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WebsiteLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TelegramLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TwitterLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DiscordLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CoinRef = table.Column<int>(type: "int", nullable: false),
+                    MarketCap = table.Column<int>(type: "int", nullable: false),
+                    Launch = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Create = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coins", x => x.Id);
+                    table.PrimaryKey("PK_CoinDetails", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,13 +209,51 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Coins",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Logo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Symbol = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Network = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsInPresale = table.Column<bool>(type: "bit", nullable: false),
+                    ContractAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LaunchDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CustomChartLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CustomSwapLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WebsiteLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TelegramLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TwitterLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DiscordLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsPromoted = table.Column<bool>(type: "bit", nullable: false),
+                    IsApproved = table.Column<bool>(type: "bit", nullable: false),
+                    CoinDetailsId = table.Column<int>(type: "int", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Coins", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Coins_CoinDetails_CoinDetailsId",
+                        column: x => x.CoinDetailsId,
+                        principalTable: "CoinDetails",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Votes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IsVoted = table.Column<bool>(type: "bit", nullable: false),
-                    UserIP = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     CoinId = table.Column<int>(type: "int", nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -241,6 +267,37 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         name: "FK_Votes_Coins_CoinId",
                         column: x => x.CoinId,
                         principalTable: "Coins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsersVotes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserIP = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VoteId = table.Column<int>(type: "int", nullable: true),
+                    CoinId = table.Column<int>(type: "int", nullable: true),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModified = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsersVotes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsersVotes_Coins_CoinId",
+                        column: x => x.CoinId,
+                        principalTable: "Coins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UsersVotes_Votes_VoteId",
+                        column: x => x.VoteId,
+                        principalTable: "Votes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -285,6 +342,11 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Coins_CoinDetailsId",
+                table: "Coins",
+                column: "CoinDetailsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DeviceCodes_DeviceCode",
                 table: "DeviceCodes",
                 column: "DeviceCode",
@@ -309,6 +371,16 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                 name: "IX_PersistedGrants_SubjectId_SessionId_Type",
                 table: "PersistedGrants",
                 columns: new[] { "SubjectId", "SessionId", "Type" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersVotes_CoinId",
+                table: "UsersVotes",
+                column: "CoinId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsersVotes_VoteId",
+                table: "UsersVotes",
+                column: "VoteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Votes_CoinId",
@@ -340,7 +412,7 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                 name: "PersistedGrants");
 
             migrationBuilder.DropTable(
-                name: "Votes");
+                name: "UsersVotes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -349,7 +421,13 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
+                name: "Votes");
+
+            migrationBuilder.DropTable(
                 name: "Coins");
+
+            migrationBuilder.DropTable(
+                name: "CoinDetails");
         }
     }
 }

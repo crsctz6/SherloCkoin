@@ -11,21 +11,24 @@ padding:20px;
 background:${Backgrounds.table};
 padding: 50px 0;
 font-family:${FontsFamilies.rest};
-`
+`;
+
 export const HeadingContainer =styled.div`
 width:90%;
 margin:0 auto;
+`;
 
-`
 export const Title =styled.p`
 font-size:${FontSize.headersAndButtons};
 font-weight:${FontWeights.medium};
 color:${FontColors.white};
-`
+`;
+
 export const Paragraph =styled.p`
 color:${FontColors.lightGrey};
 max-width:700px;
-`
+`;
+
 export const Form = styled.form`
 width:90%;
 margin:70px auto 0 auto;
@@ -37,11 +40,13 @@ flex-direction:column;
 export const Label = styled.label`
 color:${FontColors.white};
 margin:20px 0 10px 0;
-`
+`;
+
 export const UploadImg =styled.p`
 color:${FontColors.lightGrey};
 font-size:${FontSize.text};
 `;
+
 export const Plus =styled.img`
 padding-top:15px;
 height:40px;

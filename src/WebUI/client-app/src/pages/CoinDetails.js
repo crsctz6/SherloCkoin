@@ -47,14 +47,14 @@ function CoinDetails(props) {
   }
 
   return (
-      <>
-        {coinDetails && <CoinDetailsComponent 
-          coinDetails={coinDetails}
-          handleVote = {(item) => handleVote(item)} />}
-        <TableComponent
-        tableHead={tableHead}
-        tableData={props.coins}
-        coinsType={coinsType[0]}/>
+    <>
+      {coinDetails && <CoinDetailsComponent 
+        coinDetails={coinDetails}
+        handleVote = {(item) => handleVote(item)} />}
+      <TableComponent
+      tableHead={tableHead}
+      tableData={props.coins}
+      coinsType={coinsType[0]}/>
     </>
   )
 }

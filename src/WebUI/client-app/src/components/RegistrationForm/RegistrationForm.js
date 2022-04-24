@@ -1,20 +1,21 @@
 import React from 'react'
-import GetListed from '../../pages/GetListed'
 import {FormWrapper,HeadingContainer,Title,Paragraph,Form,Label,Plus,UploadImg} from './RegistrationFormStyleElements'
 import {Input,FileInput,DateInput,RadioInput,ButtonInput,TextArea} from '../../elements/InputElement'
-import addImg from '../../photos/plus.png'
+import addImg from '../../assets/plus.png'
 import {useForm} from "react-hook-form"
 function RegistrationForm() {
 
   const hiddenFileInput = React.useRef(null);
-  const handleClick = event => {
+  const handleClick = () => {
     hiddenFileInput.current.click();
   };
+
   const {register, handleSubmit} = useForm();
   const onSubmit = (newCoin) =>
   {
     console.log(newCoin);
-  }
+  };
+
   return (
     <FormWrapper>
         <HeadingContainer>
@@ -61,8 +62,6 @@ function RegistrationForm() {
                          font-size='18px'
                          tableButton={false}/>
         </Form>
-
-
     </FormWrapper>
   )
 }

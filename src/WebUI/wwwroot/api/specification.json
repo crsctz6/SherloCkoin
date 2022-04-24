@@ -326,16 +326,16 @@
             "nullable": true
           },
           "marketCap": {
-            "type": "number",
-            "format": "double"
+            "type": "integer",
+            "format": "int32"
           },
           "price": {
             "type": "number",
             "format": "double"
           },
           "launch": {
-            "type": "integer",
-            "format": "int64"
+            "type": "string",
+            "nullable": true
           },
           "votes": {
             "type": "integer",
@@ -422,6 +422,56 @@
           "logo": {
             "type": "string",
             "nullable": true
+          },
+          "coinDetails": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/CoinDetails"
+              }
+            ]
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "launch": {
+            "type": "string",
+            "nullable": true
+          },
+          "marketCap": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "CoinDetails": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "coinRef": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "marketCap": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "launch": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "create": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },

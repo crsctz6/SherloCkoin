@@ -36,7 +36,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
               </Thead>
               <Tbody>
                 {Object.values(tableData).map((obj) => (
-                  <Tbr key={obj.id}  >
+                  obj.isPromoted && <Tbr key={obj.id}  >
                     {Object.entries(obj)
                       .filter(([key, value]) => key !== 'isVoted' && key !== 'isPromoted')
                       .map(([key, value], index) => (
@@ -45,7 +45,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                           value.type !== Button  ?
                         <Td onClick={() => {navigate('/details/' + obj.id); scrollToTop()}}>{value}</Td> :
                         <Td>
-                           {value}
+                          {value}
                           </Td>
                         }
                       </Fragment>

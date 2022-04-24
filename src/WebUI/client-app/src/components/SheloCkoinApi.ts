@@ -313,7 +313,7 @@ export interface CoinListedDTO {
     name?: string | undefined;
     marketCap?: number;
     price?: number;
-    launch?: number;
+    launch?: string | undefined;
     votes?: number;
     isVoted?: boolean;
     isPromoted?: boolean;
@@ -338,6 +338,19 @@ export interface CoinDetailsDTO {
     lastDayVotes?: number;
     isVoted?: boolean;
     logo?: string | undefined;
+    coinDetails?: CoinDetails | undefined;
+    price?: number;
+    launch?: string | undefined;
+    marketCap?: number;
+}
+
+export interface CoinDetails {
+    id?: number;
+    coinRef?: number;
+    marketCap?: number;
+    launch?: string | undefined;
+    price?: number;
+    create?: Date;
 }
 
 export interface CreateCoinCommand {

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Form, Input, Button, MagnifyImg } from "./InputBarStyledComponents";
-import search from '../../photos/magnify.png'
+import search from '../../assets/magnify.png'
 
 const InputBar = () => {
   const [input, setInput] = useState("");

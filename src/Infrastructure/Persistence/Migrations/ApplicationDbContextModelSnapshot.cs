@@ -264,6 +264,9 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("CoinDetailsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ContractAddress")
                         .HasColumnType("nvarchar(max)");
 
@@ -328,7 +331,36 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CoinDetailsId");
+
                     b.ToTable("Coins");
+                });
+
+            modelBuilder.Entity("SherloCkoin.Domain.Entities.CoinDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("CoinRef")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Create")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Launch")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MarketCap")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CoinDetails");
                 });
 
             modelBuilder.Entity("SherloCkoin.Domain.Entities.UserVotes", b =>
@@ -514,6 +546,15 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SherloCkoin.Domain.Entities.Coin", b =>
+                {
+                    b.HasOne("SherloCkoin.Domain.Entities.CoinDetails", "CoinDetails")
+                        .WithMany()
+                        .HasForeignKey("CoinDetailsId");
+
+                    b.Navigation("CoinDetails");
                 });
 
             modelBuilder.Entity("SherloCkoin.Domain.Entities.UserVotes", b =>

@@ -22,12 +22,11 @@ import {CoinDetailsContainer,
         AnalyticsAndButtonContainer,
         Analytics
     } from './CoinDetailsComponentStyleElements'
-import telegram from '../../photos/telegram.png';
-import twitter from '../../photos/twitter.png';
-import discord from '../../photos/discord.png';
+import telegram from '../../assets/telegram.png';
+import twitter from '../../assets/twitter.png';
+import discord from '../../assets/discord.png';
 
 function CoinDetailsComponent(props) {
-    console.log(props);
     let details = props.coinDetails;
   return (
     <CoinDetailsContainer>
@@ -79,15 +78,15 @@ function CoinDetailsComponent(props) {
                             Price (USD)
                         </LeftSide>
                         <RightSide>
-                            330 
+                            {details.price}
                         </RightSide>
             </CoinInfoLine>
              <CoinInfoLine>
                         <LeftSide>
-                            Last 24h %
+                            Launch
                         </LeftSide>
                         <RightSide>
-                            30%
+                          {details.launch}
                         </RightSide>
             </CoinInfoLine>
             <CoinInfoLine>
@@ -95,17 +94,17 @@ function CoinDetailsComponent(props) {
                             MarketCap
                         </LeftSide>
                         <RightSide>
-                            14,932,322.1
+                            {details.marketCap}
                         </RightSide>
             </CoinInfoLine>
-            <CoinInfoLine>
+            {/* <CoinInfoLine>
                         <LeftSide>
                             Liquidity
                         </LeftSide>
                         <RightSide>
                             322
                         </RightSide>
-            </CoinInfoLine>
+            </CoinInfoLine> */}
         </MarketOverviewContainer>
         <AnalyticsAndButtonContainer>
             <Analytics>
@@ -146,7 +145,7 @@ function CoinDetailsComponent(props) {
                                 </RightSide>
                     </CoinInfoLine>
             </Analytics>
-            { details.isVoted == false && 
+            { details.isVoted === false && 
             <Button width='170px' height='50px' font-size='18px' tableButton={false} onClick={() => props.handleVote(details)} >
                 Vote {details.symbol}
             </Button> }

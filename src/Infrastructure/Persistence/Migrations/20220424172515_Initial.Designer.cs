@@ -10,8 +10,8 @@ using SherloCkoin.Infrastructure.Persistence;
 namespace SherloCkoin.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220418204934_ChangedLogoToBase64")]
-    partial class ChangedLogoToBase64
+    [Migration("20220424172515_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -266,6 +266,9 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<int?>("CoinDetailsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ContractAddress")
                         .HasColumnType("nvarchar(max)");
 
@@ -287,7 +290,13 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                     b.Property<string>("DiscordLink")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsInPresale")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsPromoted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModified")
@@ -324,7 +333,36 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CoinDetailsId");
+
                     b.ToTable("Coins");
+                });
+
+            modelBuilder.Entity("SherloCkoin.Domain.Entities.CoinDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("CoinRef")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Create")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Launch")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MarketCap")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CoinDetails");
                 });
 
             modelBuilder.Entity("SherloCkoin.Domain.Entities.UserVotes", b =>
@@ -333,6 +371,9 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int?>("CoinId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
@@ -353,6 +394,8 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CoinId");
 
                     b.HasIndex("VoteId");
 
@@ -507,8 +550,21 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SherloCkoin.Domain.Entities.Coin", b =>
+                {
+                    b.HasOne("SherloCkoin.Domain.Entities.CoinDetails", "CoinDetails")
+                        .WithMany()
+                        .HasForeignKey("CoinDetailsId");
+
+                    b.Navigation("CoinDetails");
+                });
+
             modelBuilder.Entity("SherloCkoin.Domain.Entities.UserVotes", b =>
                 {
+                    b.HasOne("SherloCkoin.Domain.Entities.Coin", null)
+                        .WithMany("UsersVotes")
+                        .HasForeignKey("CoinId");
+
                     b.HasOne("SherloCkoin.Domain.Entities.Vote", "Vote")
                         .WithMany()
                         .HasForeignKey("VoteId");
@@ -525,6 +581,8 @@ namespace SherloCkoin.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("SherloCkoin.Domain.Entities.Coin", b =>
                 {
+                    b.Navigation("UsersVotes");
+
                     b.Navigation("Votes");
                 });
 #pragma warning restore 612, 618

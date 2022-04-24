@@ -24,17 +24,6 @@ const voteRequest = async (userIp, coinId) => {
   return await voteClient.create(request); 
 };
 
-const getUserData = async () => {
-  let userData = await  axios.get(GET_IP_SERVER)
-  return userData.data.IPv4; 
-};
-
-const callApi = async (userIp) => {
-  let client = new CoinClient(SERVER_URL);
-  let response = await client.getCoinsWithPagination(1,10,userIp);
-  return response;
-};
-
 function App() {
   const [coins, setCoins] = useState(0);
   const [userIp, setUserIp] = useState("");
@@ -49,21 +38,40 @@ function App() {
 
 
   useEffect(() => {
+    const getUserData = async () => {
+      let userData = await  axios.get(GET_IP_SERVER)
+      return userData.data.IPv4; 
+    };
+
     getUserData().then(res => 
       {
       setUserIp(res);
     });
   }, []);
+  
   useEffect(() => {
+    const callApi = async (userIp) => {
+      let client = new CoinClient(SERVER_URL);
+      let response = await client.getCoinsWithPagination(1,10,userIp);
+      return response;
+    };
+
+    function handleVoteClick1(item) {
+      voteRequest(userIp, item.id).then(res => 
+        {
+          setWasVote(res);
+        });
+    }
+
     callApi(userIp).then(data => 
     {
       setCoins(data.items.map((item) => {
-        item.button = !item.isVoted && <Button tableButton={true} onClick={() => handleVoteClick(item)}>Vote</Button>
-        item.logo = <img src={item.logo} height="30px" width = "30px"/>
+        item.button = !item.isVoted && <Button tableButton={true} onClick={() => handleVoteClick1(item)}>Vote</Button>
+        item.logo = <img src={item.logo} height="30px" width = "30px" alt="logoCoin"/>
         return item
       }));
     });
-  }, [userIp, wasVote]);
+  }, [userIp, wasVote,]);
 
   return (
     <BrowserRouter>

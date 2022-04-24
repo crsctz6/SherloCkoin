@@ -15,11 +15,11 @@ import {FooterWrapper,
         SocialLinks,
         SocialLink} from './FooterComponentStyleElements'
 
-import logo from '../../photos/logo.png';
-import telegram from '../../photos/telegram.png';
-import twitter from '../../photos/twitter.png';
-import mail from '../../photos/email.png';
-import discord from '../../photos/discord.png';
+import logo from '../../assets/logoColor.png';
+import telegram from '../../assets/telegram.png';
+import twitter from '../../assets/twitter.png';
+import mail from '../../assets/email.png';
+import discord from '../../assets/discord.png';
 import { Link } from 'react-router-dom';
         
 function FooterComponent() {
