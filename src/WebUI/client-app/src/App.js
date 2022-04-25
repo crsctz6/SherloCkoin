@@ -68,6 +68,7 @@ function App() {
       setCoins(data.items.map((item) => {
         item.button = !item.isVoted && <Button tableButton={true} onClick={() => handleVoteClick1(item)}>Vote</Button>
         item.logo = <img src={item.logo} height="30px" width = "30px" alt="logoCoin"/>
+        item.marketCap = item.marketCap.toLocaleString()
         return item
       }));
     });

@@ -94,7 +94,7 @@ function CoinDetailsComponent(props) {
                             MarketCap
                         </LeftSide>
                         <RightSide>
-                            {details.marketCap}
+                            {details.marketCap.toLocaleString()}
                         </RightSide>
             </CoinInfoLine>
             {/* <CoinInfoLine>
