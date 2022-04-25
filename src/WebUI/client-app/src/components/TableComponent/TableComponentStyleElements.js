@@ -98,12 +98,15 @@ export const Td = styled.td`
   padding: 15px 4vw;
   text-align: center;
   cursor:pointer;
-
   &:hover {
-    border-top: 1px solid whitesmoke;
-    border-bottom: 1px solid whitesmoke ;
+    animation:blink 0.3s ease-in-out;
+    @keyframes blink {
+    0%{
+      border-top: 1px solid whitesmoke;
+      border-bottom: 1px solid whitesmoke ;
+    }
   };
-@media screen and (max-width: 1100px) {
+  @media screen and (max-width: 1100px) {
   padding: 15px 60px;
   };
   @media screen and (max-width: 550px) {
