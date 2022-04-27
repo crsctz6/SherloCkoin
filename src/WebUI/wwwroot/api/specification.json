@@ -479,10 +479,6 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
             "type": "string",
             "nullable": true
@@ -531,6 +527,10 @@
             "nullable": true
           },
           "discordLink": {
+            "type": "string",
+            "nullable": true
+          },
+          "logo": {
             "type": "string",
             "nullable": true
           }

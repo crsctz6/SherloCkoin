@@ -76,7 +76,7 @@ function TableComponent({ tableData, tableHead, coinsType }) {
                       .map(([key, value], index) =>  (
                       <Fragment key={index}>
                          {
-                          value.type !== Button  ?
+                           value && value.type !== Button  ?
                         <Td onClick={() => navigate('/details/' + obj.id)}>{value}</Td> :
                         <Td>{value}</Td>
                         }

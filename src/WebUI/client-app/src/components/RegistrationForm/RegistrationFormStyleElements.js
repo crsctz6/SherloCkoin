@@ -52,3 +52,8 @@ padding-top:15px;
 height:40px;
 width:40px;
 `;
+
+export const ErrorMessage =styled.p`
+color:${FontColors.orange};
+max-width:700px;
+`;

@@ -10,7 +10,6 @@ namespace SherloCkoin.Application.Coins.Commands.CreateCoin
 {
     public class CreateCoinCommand : IRequest<int>
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Symbol { get; set; }
         public string Network { get; set; }
@@ -24,6 +23,7 @@ namespace SherloCkoin.Application.Coins.Commands.CreateCoin
         public string TelegramLink { get; set; }
         public string TwitterLink { get; set; }
         public string DiscordLink { get; set; }
+        public string Logo { get; set; }
     }
 
     public class CreateCoinCommandHandler : IRequestHandler<CreateCoinCommand, int>
@@ -51,7 +51,8 @@ namespace SherloCkoin.Application.Coins.Commands.CreateCoin
                 Symbol = request.Symbol,
                 TelegramLink = request.TelegramLink,
                 TwitterLink = request.TwitterLink,
-                WebsiteLink = request.WebsiteLink
+                WebsiteLink = request.WebsiteLink,
+                Logo = request.Logo
             };
 
             entity.DomainEvents.Add(new CoinCreatedEvent(entity));

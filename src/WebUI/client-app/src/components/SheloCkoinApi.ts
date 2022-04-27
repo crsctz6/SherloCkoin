@@ -354,7 +354,6 @@ export interface CoinDetails {
 }
 
 export interface CreateCoinCommand {
-    id?: number;
     name?: string | undefined;
     symbol?: string | undefined;
     network?: string | undefined;
@@ -368,6 +367,7 @@ export interface CreateCoinCommand {
     telegramLink?: string | undefined;
     twitterLink?: string | undefined;
     discordLink?: string | undefined;
+    logo?: string | undefined;
 }
 
 export interface UpdateCoinCommand {
