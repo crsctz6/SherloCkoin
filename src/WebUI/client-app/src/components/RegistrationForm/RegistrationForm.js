@@ -20,7 +20,6 @@ function RegistrationForm() {
     hiddenFileInput.current.click();
     const logoImg = await convertToBase64(e.target.files[0]).then();
     setLogo(logoImg);
-    console.log(logo);
   };
  
   const onSubmit = (newCoin) =>
@@ -35,7 +34,6 @@ function RegistrationForm() {
     newCoin.logo = logo;
     callApi(newCoin).then(data => 
       {
-        console.log(data);
         reset();
         setLogo('');
       });

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Backgrounds,FontColors } from "../GlobalStyleConsts";
+import { Backgrounds,FontColors, FontSize, FontsFamilies, FontWeights } from "../GlobalStyleConsts";
 export const Form = styled.form`
   position: relative;
   display: flex;
@@ -9,7 +9,7 @@ export const Form = styled.form`
   background-color: ${Backgrounds.form};
   
   /* Change width of the form depending if the bar is opened or not */
-  width: ${(props) => (props.barOpened ? "25%" : "20px")};
+  width: ${(props) => (props.barOpened ? "100%" : "20px")};
   /* If bar opened, normal cursor on the whole form. If closed, show pointer on the whole form so user knows he can click to open it */
   cursor: ${(props) => (props.barOpened ? "auto" : "pointer")};
   padding: 20px;
@@ -50,3 +50,38 @@ export const Button = styled.button`
 `;
 export const MagnifyImg = styled.img`
 height:25px;`;
+
+export const SearchPanel = styled.div`
+max-width:25%;
+display: flex;
+justify-content: center;`;
+
+export const Ul = styled.ul`
+display: ${(props) => (props.barOpened ? "inline" : "none")};
+position:absolute;
+top:70px;
+width: 25%;
+max-height:400px;
+overflow: auto;
+padding-inline-start:2px;
+margin-top:10px;
+background: ${Backgrounds.table};`
+
+export const ResultItems = styled.div`
+display: flex;
+background: ${Backgrounds.table};
+color: ${FontColors.white};
+font-size: ${FontSize.text};
+font-family: ${FontsFamilies.rest};
+font-weight: ${FontWeights.medium};
+width: 90%;
+position: relative;
+justify-content: space-between;
+padding: 3%;
+cursor: pointer;
+`;
+
+export const TextContainer = styled.div`
+  padding: 1px 1vw;
+  text-align: right;
+`;

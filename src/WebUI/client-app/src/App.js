@@ -28,14 +28,24 @@ function App() {
   const [coins, setCoins] = useState(0);
   const [userIp, setUserIp] = useState("");
   const [wasVote, setWasVote] = useState(0);
-
+  const [coinsToSearch, setCoinsToSearch] = useState();
   function handleVoteClick(item) {
     voteRequest(userIp, item.id).then(res => 
       {
         setWasVote(res);
       });
   }
-
+  useEffect(() => {
+    const getSearchData = async () => {
+      let client = new CoinClient(SERVER_URL);
+      let response = await client.getCoinsForSearch();
+      return response;
+    };
+    getSearchData().then(res => 
+      {
+        setCoinsToSearch(res);
+    });
+  }, []);
 
   useEffect(() => {
     const getUserData = async () => {
@@ -74,9 +84,11 @@ function App() {
     });
   }, [userIp, wasVote,]);
 
+
+
   return (
     <BrowserRouter>
-      <Header />
+      <Header data ={coinsToSearch} />
       <Routes>
         <Route path="/" element={<HomePage coins = {coins} />} />
         <Route path="details/:id" element={<CoinDetails coins = {coins} userIP = {userIp} handleVote = {(item) => handleVoteClick(item)} />} />

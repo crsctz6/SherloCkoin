@@ -9,6 +9,8 @@ using SherloCkoin.Application.Coins.Commands.DeleteCoin;
 using SherloCkoin.Application.Coins.Commands.UpdateCoin;
 using SherloCkoin.Application.Coins.Queries.GetCoinsList;
 using SherloCkoin.Application.Coins.Queries.GetCoinsDetails;
+using SherloCkoin.Application.Coins.Queries.GetCoinsForSearch;
+using System.Collections.Generic;
 
 namespace SherloCkoin.WebUI.Controllers
 {
@@ -18,6 +20,11 @@ namespace SherloCkoin.WebUI.Controllers
         public async Task<ActionResult<PaginatedList<CoinListedDTO>>> GetCoinsWithPagination([FromQuery] GetCoinsWithPaginationQuery query)
         {
             return await Mediator.Send(query);
+        }
+        [HttpGet("search")]
+        public async Task<ActionResult<List<CoinListedSearchDTO>>> GetCoinsForSearch()
+        {
+            return await Mediator.Send(new GetCoinsForSearch());
         }
 
         [HttpGet("{id}/{userIP}")]
